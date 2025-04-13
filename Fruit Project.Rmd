@@ -1,0 +1,37 @@
+---
+title: "Final Project"
+author: "EKenreck"
+date: "2025-04-10"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+#install packages and set up the data
+install.packages("ggplot2")
+install.packages("dbplyr")
+library(ggplot2)
+library(dbplyr)
+data <- read.csv("Fruit-Prices-2022.csv")
+head(data)
+```
+
+
+```{r}
+#What is the price of eache variable
+
+data %>% select(Fruit, RetailPrice, RetailPriceUnit)
+
+priceperunit_per_fruit <- data %>% ggplot(aes(x = Fruit, y = RetailPrice)) + geom_bar(stat = "identity") + theme(axis.text.x = element_text(angle = 45, size = 7, vjust = 1, hjust = 1))
+
+```
+
+```{r}
+
+
+
+```
+
