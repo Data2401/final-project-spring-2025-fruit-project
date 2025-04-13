@@ -19,7 +19,7 @@ library(dplyr)
 
 ```{r}
 #Load and view data
-data <- read.csv("Fruit-Prices-2022.csv")
+FruitData <- read.csv("Fruit-Prices-2022.csv")
 head(data)
 ```
 
@@ -38,7 +38,7 @@ FruitPriceperYield
 ```
 
 ```{r}
-#create a graph that compare the fruit to price per yield.
+#create a graph that compare the fruit to price per yield with color coding of form.
 FruitPriceperYieldGraph <- FruitPriceperYield %>% ggplot(aes(x = Fruit, y = RetailPriceperYield, color = Form)) + geom_bar(stat = "identity") + theme(axis.text.x = element_text(angle = 45, size = 7, vjust = 1, hjust = 1))
 FruitPriceperYieldGraph
 ```
@@ -113,6 +113,14 @@ Watermelon %>% ggplot(aes(x = Fruit, y = RetailPriceperYield)) + geom_bar(stat =
 ```
 
 ```{r}
+#Providing the yield per cuup and price per cup for each fruit. 
+CupEquivalentData <- FruitData %>% select(Fruit, Yield, CupEquivalentSize, CupEquivalentUnit, CupEquivalentPrice) %>% mutate(YieldPerCup = Yield / CupEquivalentSize) %>% mutate(PricePerCup = YieldPerCup * CupEquivalentPrice)
+CupEquivalentData
+```
+
+```{r}
+
+CupEquivalentData %>% ggplot(aes(x = Fruit, y = PricePerCup)) + geom_bar(stat = "identity")
 
 ```
 
