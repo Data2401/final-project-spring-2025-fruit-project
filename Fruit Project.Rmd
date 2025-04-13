@@ -11,27 +11,108 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ```{r}
 #install packages and set up the data
-install.packages("ggplot2")
-install.packages("dbplyr")
+#install.packages("ggplot2")
+#install.packages("dplyr")
 library(ggplot2)
-library(dbplyr)
+library(dplyr)
+```
+
+```{r}
+#Load and view data
 data <- read.csv("Fruit-Prices-2022.csv")
 head(data)
 ```
 
 
+
 ```{r}
-#What is the price of eache variable
-
-data %>% select(Fruit, RetailPrice, RetailPriceUnit)
-
-priceperunit_per_fruit <- data %>% ggplot(aes(x = Fruit, y = RetailPrice)) + geom_bar(stat = "identity") + theme(axis.text.x = element_text(angle = 45, size = 7, vjust = 1, hjust = 1))
+#create graph that compares the fruit and retail price per unit
+data %>% ggplot(aes(x = Fruit, y = RetailPrice)) + geom_bar(stat = "identity") + theme(axis.text.x = element_text(angle = 45, size = 7, vjust = 1, hjust = 1))
 
 ```
 
 ```{r}
+#view just the fruit, form, price, price unit, and yield. Then add a column that shows the prices per unit yield. 
+FruitPriceperYield <- data %>% select("Fruit", "Form", "RetailPrice", "RetailPriceUnit", "Yield") %>% mutate(RetailPriceperYield = RetailPrice * Yield)
+FruitPriceperYield
+```
+
+```{r}
+#create a graph that compare the fruit to price per yield.
+FruitPriceperYieldGraph <- FruitPriceperYield %>% ggplot(aes(x = Fruit, y = RetailPriceperYield, color = Form)) + geom_bar(stat = "identity") + theme(axis.text.x = element_text(angle = 45, size = 7, vjust = 1, hjust = 1))
+FruitPriceperYieldGraph
+```
 
 
+```{r}
+#seperate each fruit to its on group
+Apples <- FruitPriceperYield[1:4,]
+Apricots <- FruitPriceperYield[5:8,]
+Bananas <- FruitPriceperYield[9,]
+MixedBerries <- FruitPriceperYield[10,]
+Blackberries <- FruitPriceperYield[11:12,]
+Blueberries <- FruitPriceperYield[13:14,]
+Cantaloupe <- FruitPriceperYield[15,]
+Cherries <- FruitPriceperYield[16:17,]
+Clementines <- FruitPriceperYield[18,]
+Cranberries <- FruitPriceperYield[19,]
+Dates <- FruitPriceperYield[20,]
+Figs <- FruitPriceperYield[21,]
+FruitCocktail <- FruitPriceperYield[22:23,]
+Grapefruit <- FruitPriceperYield[24:25,]
+Grapes <- FruitPriceperYield[26:29,]
+Honeydew <- FruitPriceperYield[30,]
+Kiwi <- FruitPriceperYield[31,]
+Mangoes <- FruitPriceperYield[32:33,]
+Nectarines <- FruitPriceperYield[34,]
+Oranges <- FruitPriceperYield[35:37,]
+Papaya <- FruitPriceperYield[38:39,]
+Peaches <- FruitPriceperYield[40:43,]
+Pears <- FruitPriceperYield[44:46,]
+Pineapple <- FruitPriceperYield[47:52,]
+Plum <- FruitPriceperYield[53:55,]
+Pomogranate <- FruitPriceperYield[56:57,]
+Raspberries <- FruitPriceperYield[58:59,]
+Strawberries <- FruitPriceperYield[60:61,]
+Watermelon <- FruitPriceperYield[62,]
+
+```
+
+```{r}
+#create graphs to compare the price of each individual fruit to it's price per yield. 
+Apples %>% ggplot(aes(x = Fruit, y = RetailPriceperYield)) + geom_bar(stat = "identity") + theme(axis.text.x = element_text(angle = 45, size = 7, vjust = 1, hjust = 1))
+Apricots %>% ggplot(aes(x = Fruit, y = RetailPriceperYield)) + geom_bar(stat = "identity") + theme(axis.text.x = element_text(angle = 45, size = 7, vjust = 1, hjust = 1))
+Bananas %>% ggplot(aes(x = Fruit, y = RetailPriceperYield)) + geom_bar(stat = "identity") + theme(axis.text.x = element_text(angle = 45, size = 7, vjust = 1, hjust = 1))
+Blackberries %>% ggplot(aes(x = Fruit, y = RetailPriceperYield)) + geom_bar(stat = "identity") + theme(axis.text.x = element_text(angle = 45, size = 7, vjust = 1, hjust = 1))
+Blueberries %>% ggplot(aes(x = Fruit, y = RetailPriceperYield)) + geom_bar(stat = "identity") + theme(axis.text.x = element_text(angle = 45, size = 7, vjust = 1, hjust = 1))
+Cantaloupe %>% ggplot(aes(x = Fruit, y = RetailPriceperYield)) + geom_bar(stat = "identity") + theme(axis.text.x = element_text(angle = 45, size = 7, vjust = 1, hjust = 1))
+Cherries %>% ggplot(aes(x = Fruit, y = RetailPriceperYield)) + geom_bar(stat = "identity") + theme(axis.text.x = element_text(angle = 45, size = 7, vjust = 1, hjust = 1))
+Clementines %>% ggplot(aes(x = Fruit, y = RetailPriceperYield)) + geom_bar(stat = "identity") + theme(axis.text.x = element_text(angle = 45, size = 7, vjust = 1, hjust = 1))
+Cranberries %>% ggplot(aes(x = Fruit, y = RetailPriceperYield)) + geom_bar(stat = "identity") + theme(axis.text.x = element_text(angle = 45, size = 7, vjust = 1, hjust = 1))
+Dates %>% ggplot(aes(x = Fruit, y = RetailPriceperYield)) + geom_bar(stat = "identity") + theme(axis.text.x = element_text(angle = 45, size = 7, vjust = 1, hjust = 1))
+Figs %>% ggplot(aes(x = Fruit, y = RetailPriceperYield)) + geom_bar(stat = "identity") + theme(axis.text.x = element_text(angle = 45, size = 7, vjust = 1, hjust = 1))
+FruitCocktail %>% ggplot(aes(x = Fruit, y = RetailPriceperYield)) + geom_bar(stat = "identity") + theme(axis.text.x = element_text(angle = 45, size = 7, vjust = 1, hjust = 1))
+Grapefruit %>% ggplot(aes(x = Fruit, y = RetailPriceperYield)) + geom_bar(stat = "identity") + theme(axis.text.x = element_text(angle = 45, size = 7, vjust = 1, hjust = 1))
+Grapes %>% ggplot(aes(x = Fruit, y = RetailPriceperYield)) + geom_bar(stat = "identity") + theme(axis.text.x = element_text(angle = 45, size = 7, vjust = 1, hjust = 1))
+Honeydew %>% ggplot(aes(x = Fruit, y = RetailPriceperYield)) + geom_bar(stat = "identity") + theme(axis.text.x = element_text(angle = 45, size = 7, vjust = 1, hjust = 1))
+Kiwi %>% ggplot(aes(x = Fruit, y = RetailPriceperYield)) + geom_bar(stat = "identity") + theme(axis.text.x = element_text(angle = 45, size = 7, vjust = 1, hjust = 1))
+Mangoes %>% ggplot(aes(x = Fruit, y = RetailPriceperYield)) + geom_bar(stat = "identity") + theme(axis.text.x = element_text(angle = 45, size = 7, vjust = 1, hjust = 1))
+MixedBerries %>% ggplot(aes(x = Fruit, y = RetailPriceperYield)) + geom_bar(stat = "identity") + theme(axis.text.x = element_text(angle = 45, size = 7, vjust = 1, hjust = 1))
+Nectarines %>% ggplot(aes(x = Fruit, y = RetailPriceperYield)) + geom_bar(stat = "identity") + theme(axis.text.x = element_text(angle = 45, size = 7, vjust = 1, hjust = 1))
+Oranges %>% ggplot(aes(x = Fruit, y = RetailPriceperYield)) + geom_bar(stat = "identity") + theme(axis.text.x = element_text(angle = 45, size = 7, vjust = 1, hjust = 1))
+Papaya %>% ggplot(aes(x = Fruit, y = RetailPriceperYield)) + geom_bar(stat = "identity") + theme(axis.text.x = element_text(angle = 45, size = 7, vjust = 1, hjust = 1))
+Peaches %>% ggplot(aes(x = Fruit, y = RetailPriceperYield)) + geom_bar(stat = "identity") + theme(axis.text.x = element_text(angle = 45, size = 7, vjust = 1, hjust = 1))
+Pears %>% ggplot(aes(x = Fruit, y = RetailPriceperYield)) + geom_bar(stat = "identity") + theme(axis.text.x = element_text(angle = 45, size = 7, vjust = 1, hjust = 1))
+Pineapple %>% ggplot(aes(x = Fruit, y = RetailPriceperYield)) + geom_bar(stat = "identity") + theme(axis.text.x = element_text(angle = 45, size = 7, vjust = 1, hjust = 1))
+Plum %>% ggplot(aes(x = Fruit, y = RetailPriceperYield)) + geom_bar(stat = "identity") + theme(axis.text.x = element_text(angle = 45, size = 7, vjust = 1, hjust = 1))
+Pomogranate %>% ggplot(aes(x = Fruit, y = RetailPriceperYield)) + geom_bar(stat = "identity") + theme(axis.text.x = element_text(angle = 45, size = 7, vjust = 1, hjust = 1))
+Raspberries %>% ggplot(aes(x = Fruit, y = RetailPriceperYield)) + geom_bar(stat = "identity") + theme(axis.text.x = element_text(angle = 45, size = 7, vjust = 1, hjust = 1))
+Strawberries %>% ggplot(aes(x = Fruit, y = RetailPriceperYield)) + geom_bar(stat = "identity") + theme(axis.text.x = element_text(angle = 45, size = 7, vjust = 1, hjust = 1))
+Watermelon %>% ggplot(aes(x = Fruit, y = RetailPriceperYield)) + geom_bar(stat = "identity") + theme(axis.text.x = element_text(angle = 45, size = 7, vjust = 1, hjust = 1))
+
+```
+
+```{r}
 
 ```
 
