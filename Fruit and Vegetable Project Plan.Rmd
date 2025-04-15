@@ -1,0 +1,35 @@
+---
+title: "Fruit and Vegetable Project Plan"
+author: "Misgana Bekele, Marlene Berrios, and Elizabeth Kenreck"
+date: "2025-04-15"
+output: html_document
+---
+### **Fruit and Vegetable Prices in 2022**
+
+The data sets we choose to look over and analyze, are Fruit Prices in 2022 and Vegetable Prices in 2022. Reviewing this data we can compare prices of each fruit and vegetable directly. As well as looking at one type of fruit or vegetable in it's multiple forms to see if one form has a significant price difference from the others. We can also compare the prices of fruits to the prices of vegetables. Both data sets are from the Economic Research Service on the the US Department of Agriculture website; <http://www.ers.usda.gov/data-products/fruit-and-vegetable-prices>.
+
+#### **Data provided:**
+
+* Fruit: Name of the fruit or vegetable
+* Form: How the fruit or vegetable is sold (ex. fresh, canned, juice, etc)
+* Retail Price: Cost of fruit or vegetable in dollars
+* Retail Price Unit: Unit of measurement the fruit or vegetable is sold (ex. per pound, per cup, etc.)
+* Yield: Amount produced per sold item
+* Cup Equivalent Size: Measurement of the fruit or vegetable equivalent to one cup
+* Cup Equivalent Unit: Unit of measurement of fruit or vegetable equivalent to one cup (ex. per pound, per fluid oz., etc.)
+* Cup Equivalent Price: Cost of fruit or vegetable per cup
+
+#### **Questions we are asking:**
+
+* Which fruit is the most expensive and least expensive?
+    + using the Retail Price and Cup Equivalent Price
+* Which form of the fruit is most expensive and least expensive?
+    + using the Retail Price and Cup Equivalent Price
+* Which vegetable is the most expensive and least expensive?
+    + using the Retail Price and Cup Equivalent Price
+* Which form of the vegetable is the most expensive and the least expensive?
+    + using the Retail Price and Cup Equivalent Price
+* The average retail price for each form.
+* Price comparison between fruits and vegetables in each form. 
+    
+  
