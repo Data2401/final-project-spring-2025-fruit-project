@@ -1,0 +1,85 @@
+---
+title: "Final Project"
+author: "EKenreck"
+date: "2025-04-10"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r}
+#install packages and set up the data
+#install.packages("ggplot2")
+#install.packages("dplyr")
+library(ggplot2)
+library(dplyr)
+```
+
+```{r}
+#Load and view data
+VegetableData <- read.csv("Vegetable-Prices-2022.csv")
+FruitData <- read.csv("Fruit-Prices-2022.csv")
+
+glimpse(FruitData)
+glimpse(VegetableData)
+```
+
+
+
+
+```{r}
+#view just the fruit, form, price, price unit, and yield. Then add a column that shows the prices per unit yield. 
+FruitPriceperYield <- FruitData %>% select("Fruit", "Form", "RetailPrice", "RetailPriceUnit", "Yield") %>% mutate(RetailPriceperYield = RetailPrice * Yield)
+FruitPriceperYield
+```
+
+
+
+```{r}
+#Providing the yield per cuup and price per cup for each fruit. 
+CupEquivalentData <- FruitData %>% select(Fruit, Yield, CupEquivalentSize, CupEquivalentUnit, CupEquivalentPrice) %>% mutate(YieldPerCup = Yield / CupEquivalentSize) %>% mutate(PricePerCup = YieldPerCup * CupEquivalentPrice)
+CupEquivalentData
+```
+
+```{r}
+library(kableExtra)
+
+FruitData %>% select(Fruit, Form, CupEquivalentPrice) %>% arrange(-CupEquivalentPrice) %>%   knitr::kable() %>% kable_styling() %>% scroll_box(width = "500px", height = "200px")
+
+```
+
+```{r}
+AveragePriceperForm <- FruitData %>% group_by(Form) %>% summarise(AveragePrice = mean(RetailPrice, na.rm = TRUE))
+
+AveragePriceperForm %>% ggplot(aes(x = Form, y = AveragePrice)) + geom_col() + labs(title = "Average Retail Price per Market (Form)", x = "Market Form", y = "Average Price ($)") + theme_minimal()
+```
+
+
+```{r}
+#view just the vegetable, form, price, price unit, and yield. Then add a column that shows the prices per unit yield. 
+VegetablePriceperYield <- VegetableData %>% select("Vegetable", "Form", "RetailPrice", "RetailPriceUnit", "Yield") %>% mutate(RetailPriceperYield = RetailPrice * Yield)
+VegetablePriceperYield
+```
+
+```{r}
+#Providing the yield per cuup and price per cup for each fruit. 
+VegetableCupEquivalentData <- VegetableData %>% select(Vegetable, Yield, CupEquivalentSize, CupEquivalentUnit, CupEquivalentPrice) %>% mutate(YieldPerCup = Yield / CupEquivalentSize) %>% mutate(PricePerCup = YieldPerCup * CupEquivalentPrice)
+VegetableCupEquivalentData
+```
+
+```{r}
+
+VegetableData %>% select(Vegetable, Form, CupEquivalentPrice) %>% arrange(-CupEquivalentPrice) %>%   knitr::kable() %>% kable_styling() %>% scroll_box(width = "500px", height = "200px")
+
+```
+
+```{r}
+VegAveragePriceperForm <- VegetableData %>% group_by(Form) %>% summarise(AveragePrice = mean(RetailPrice, na.rm = TRUE))
+
+VegAveragePriceperForm %>% ggplot(aes(x = Form, y = AveragePrice)) + geom_col() + labs(title = "Average Retail Price per Market (Form)", x = "Market Form", y = "Average Price ($)") + theme_minimal()
+```

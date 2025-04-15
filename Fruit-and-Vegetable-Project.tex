@@ -1,0 +1,1136 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+\usepackage[normalem]{ulem}
+\usepackage{makecell}
+\usepackage{xcolor}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Final Project},
+  pdfauthor={EKenreck},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Final Project}
+\author{EKenreck}
+\date{2025-04-10}
+
+\begin{document}
+\maketitle
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#install packages and set up the data}
+\CommentTok{\#install.packages("ggplot2")}
+\CommentTok{\#install.packages("dplyr")}
+\FunctionTok{library}\NormalTok{(ggplot2)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: package 'ggplot2' was built under R version 4.4.3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(dplyr)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: package 'dplyr' was built under R version 4.4.3
+\end{verbatim}
+
+\begin{verbatim}
+## 
+## Attaching package: 'dplyr'
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:stats':
+## 
+##     filter, lag
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:base':
+## 
+##     intersect, setdiff, setequal, union
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Load and view data}
+\NormalTok{VegetableData }\OtherTok{\textless{}{-}} \FunctionTok{read.csv}\NormalTok{(}\StringTok{"Vegetable{-}Prices{-}2022.csv"}\NormalTok{)}
+\NormalTok{FruitData }\OtherTok{\textless{}{-}} \FunctionTok{read.csv}\NormalTok{(}\StringTok{"Fruit{-}Prices{-}2022.csv"}\NormalTok{)}
+
+\FunctionTok{glimpse}\NormalTok{(FruitData)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Rows: 62
+## Columns: 8
+## $ Fruit              <chr> "Apples", "Apples, applesauce", "Apples, ready-to-d~
+## $ Form               <chr> "Fresh", "Canned", "Juice", "Juice", "Fresh", "Cann~
+## $ RetailPrice        <dbl> 1.8541, 1.1705, 0.8699, 0.6086, 3.6162, 1.8645, 2.2~
+## $ RetailPriceUnit    <chr> "per pound", "per pound", "per pint", "per pint", "~
+## $ Yield              <dbl> 0.90, 1.00, 1.00, 1.00, 0.93, 1.00, 0.65, 1.00, 0.6~
+## $ CupEquivalentSize  <dbl> 0.2425, 0.5401, 8.0000, 8.0000, 0.3638, 0.5401, 0.4~
+## $ CupEquivalentUnit  <chr> "pounds", "pounds", "fluid ounces", "fluid ounces",~
+## $ CupEquivalentPrice <dbl> 0.4996, 0.6323, 0.4349, 0.3043, 1.4145, 1.0071, 1.5~
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{glimpse}\NormalTok{(VegetableData)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Rows: 93
+## Columns: 8
+## $ Vegetable          <chr> "Acorn squash", "Artichoke", "Artichoke", "Asparagu~
+## $ Form               <chr> "Fresh", "Fresh", "Canned", "Fresh", "Canned", "Fro~
+## $ RetailPrice        <dbl> 1.2136, 2.4703, 3.4498, 2.9531, 3.4328, 6.8212, 2.6~
+## $ RetailPriceUnit    <chr> "per pound", "per pound", "per pound", "per pound",~
+## $ Yield              <dbl> 0.4586, 0.3750, 0.6500, 0.4938, 0.6500, 1.0335, 0.7~
+## $ CupEquivalentSize  <dbl> 0.4519, 0.3858, 0.3858, 0.3968, 0.3968, 0.3968, 0.3~
+## $ CupEquivalentUnit  <chr> "pounds", "pounds", "pounds", "pounds", "pounds", "~
+## $ CupEquivalentPrice <dbl> 1.1961, 2.5415, 2.0476, 2.3731, 2.0958, 2.6191, 1.1~
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#view just the fruit, form, price, price unit, and yield. Then add a column that shows the prices per unit yield. }
+\NormalTok{FruitPriceperYield }\OtherTok{\textless{}{-}}\NormalTok{ FruitData }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{select}\NormalTok{(}\StringTok{"Fruit"}\NormalTok{, }\StringTok{"Form"}\NormalTok{, }\StringTok{"RetailPrice"}\NormalTok{, }\StringTok{"RetailPriceUnit"}\NormalTok{, }\StringTok{"Yield"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{mutate}\NormalTok{(}\AttributeTok{RetailPriceperYield =}\NormalTok{ RetailPrice }\SpecialCharTok{*}\NormalTok{ Yield)}
+\NormalTok{FruitPriceperYield}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                                       Fruit   Form RetailPrice RetailPriceUnit
+## 1                                    Apples  Fresh      1.8541       per pound
+## 2                        Apples, applesauce Canned      1.1705       per pound
+## 3                    Apples, ready-to-drink  Juice      0.8699        per pint
+## 4                Apples, frozen concentrate  Juice      0.6086        per pint
+## 5                                  Apricots  Fresh      3.6162       per pound
+## 6                 Apricots, packed in juice Canned      1.8645       per pound
+## 7        Apricots, packed in syrup or water Canned      2.2362       per pound
+## 8                                  Apricots  Dried      7.6611       per pound
+## 9                                   Bananas  Fresh      0.5971       per pound
+## 10                           Berries, mixed Frozen      4.2673       per pound
+## 11                             Blackberries  Fresh      6.7483       per pound
+## 12                             Blackberries Frozen      4.8277       per pound
+## 13                              Blueberries  Fresh      4.1575       per pound
+## 14                              Blueberries Frozen      3.8210       per pound
+## 15                               Cantaloupe  Fresh      0.7523       per pound
+## 16                                 Cherries  Fresh      4.6632       per pound
+## 17       Cherries, packed in syrup or water Canned      5.2418       per pound
+## 18                              Clementines  Fresh      1.5811       per pound
+## 19                              Cranberries  Dried      5.0828       per pound
+## 20                                    Dates  Dried      5.7499       per pound
+## 21                                     Figs  Dried      7.3233       per pound
+## 22          Fruit cocktail, packed in juice Canned      2.3940       per pound
+## 23 Fruit cocktail, packed in syrup or water Canned      2.0996       per pound
+## 24                               Grapefruit  Fresh      1.4444       per pound
+## 25               Grapefruit, ready-to-drink  Juice      1.1935        per pint
+## 26                                   Grapes  Fresh      2.0363       per pound
+## 27                         Grapes (raisins)  Dried      3.9936       per pound
+## 28                   Grapes, ready-to-drink  Juice      1.0509        per pint
+## 29               Grapes, frozen concentrate  Juice      0.7524        per pint
+## 30                                 Honeydew  Fresh      1.1589       per pound
+## 31                                     Kiwi  Fresh      2.6064       per pound
+## 32                                  Mangoes  Fresh      1.4698       per pound
+## 33                                  Mangoes  Dried     10.3035       per pound
+## 34                               Nectarines  Fresh      2.3721       per pound
+## 35                                  Oranges  Fresh      1.4624       per pound
+## 36                  Oranges, ready-to-drink  Juice      1.0572        per pint
+## 37              Oranges, frozen concentrate  Juice      0.7338        per pint
+## 38                                   Papaya  Fresh      1.3375       per pound
+## 39                                   Papaya  Dried      7.4854       per pound
+## 40                                  Peaches  Fresh      2.1785       per pound
+## 41                 Peaches, packed in juice Canned      2.2503       per pound
+## 42        Peaches, packed in syrup or water Canned      2.0102       per pound
+## 43                                  Peaches Frozen      3.6058       per pound
+## 44                                    Pears  Fresh      1.8472       per pound
+## 45                   Pears, packed in juice Canned      2.1400       per pound
+## 46          Pears, packed in syrup or water Canned      2.0920       per pound
+## 47                                Pineapple  Fresh      0.6170       per pound
+## 48               Pineapple, packed in juice Canned      1.6509       per pound
+## 49      Pineapple, packed in syrup or water Canned      1.7771       per pound
+## 50                                Pineapple  Dried      7.0133       per pound
+## 51                Pineapple, ready-to-drink  Juice      1.2243        per pint
+## 52            Pineapple, frozen concentrate  Juice      0.7256        per pint
+## 53                                     Plum  Fresh      2.5259       per pound
+## 54                            Plum (prunes)  Dried      6.3293       per pound
+## 55             Plum (prune), ready-to-drink  Juice      1.6988        per pint
+## 56                              Pomegranate  Fresh      2.4672       per pound
+## 57              Pomegranate, ready-to-drink  Juice      3.2788        per pint
+## 58                              Raspberries  Fresh      7.7338       per pound
+## 59                              Raspberries Frozen      6.1590       per pound
+## 60                             Strawberries  Fresh      2.9682       per pound
+## 61                             Strawberries Frozen      3.3421       per pound
+## 62                               Watermelon  Fresh      0.3820       per pound
+##    Yield RetailPriceperYield
+## 1   0.90            1.668690
+## 2   1.00            1.170500
+## 3   1.00            0.869900
+## 4   1.00            0.608600
+## 5   0.93            3.363066
+## 6   1.00            1.864500
+## 7   0.65            1.453530
+## 8   1.00            7.661100
+## 9   0.64            0.382144
+## 10  1.00            4.267300
+## 11  0.96            6.478368
+## 12  1.00            4.827700
+## 13  0.95            3.949625
+## 14  1.00            3.821000
+## 15  0.51            0.383673
+## 16  0.92            4.290144
+## 17  0.65            3.407170
+## 18  0.77            1.217447
+## 19  1.00            5.082800
+## 20  1.00            5.749900
+## 21  0.96            7.030368
+## 22  1.00            2.394000
+## 23  0.65            1.364740
+## 24  0.49            0.707756
+## 25  1.00            1.193500
+## 26  0.96            1.954848
+## 27  1.00            3.993600
+## 28  1.00            1.050900
+## 29  1.00            0.752400
+## 30  0.46            0.533094
+## 31  0.76            1.980864
+## 32  0.71            1.043558
+## 33  1.00           10.303500
+## 34  0.91            2.158611
+## 35  0.68            0.994432
+## 36  1.00            1.057200
+## 37  1.00            0.733800
+## 38  0.62            0.829250
+## 39  1.00            7.485400
+## 40  0.96            2.091360
+## 41  1.00            2.250300
+## 42  0.65            1.306630
+## 43  1.00            3.605800
+## 44  0.90            1.662480
+## 45  1.00            2.140000
+## 46  0.65            1.359800
+## 47  0.51            0.314670
+## 48  1.00            1.650900
+## 49  0.65            1.155115
+## 50  1.00            7.013300
+## 51  1.00            1.224300
+## 52  1.00            0.725600
+## 53  0.94            2.374346
+## 54  1.00            6.329300
+## 55  1.00            1.698800
+## 56  0.56            1.381632
+## 57  1.00            3.278800
+## 58  0.96            7.424448
+## 59  1.00            6.159000
+## 60  0.94            2.790108
+## 61  1.00            3.342100
+## 62  0.52            0.198640
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Providing the yield per cuup and price per cup for each fruit. }
+\NormalTok{CupEquivalentData }\OtherTok{\textless{}{-}}\NormalTok{ FruitData }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{select}\NormalTok{(Fruit, Yield, CupEquivalentSize, CupEquivalentUnit, CupEquivalentPrice) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{mutate}\NormalTok{(}\AttributeTok{YieldPerCup =}\NormalTok{ Yield }\SpecialCharTok{/}\NormalTok{ CupEquivalentSize) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{mutate}\NormalTok{(}\AttributeTok{PricePerCup =}\NormalTok{ YieldPerCup }\SpecialCharTok{*}\NormalTok{ CupEquivalentPrice)}
+\NormalTok{CupEquivalentData}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                                       Fruit Yield CupEquivalentSize
+## 1                                    Apples  0.90            0.2425
+## 2                        Apples, applesauce  1.00            0.5401
+## 3                    Apples, ready-to-drink  1.00            8.0000
+## 4                Apples, frozen concentrate  1.00            8.0000
+## 5                                  Apricots  0.93            0.3638
+## 6                 Apricots, packed in juice  1.00            0.5401
+## 7        Apricots, packed in syrup or water  0.65            0.4409
+## 8                                  Apricots  1.00            0.1433
+## 9                                   Bananas  0.64            0.3307
+## 10                           Berries, mixed  1.00            0.3307
+## 11                             Blackberries  0.96            0.3197
+## 12                             Blackberries  1.00            0.3307
+## 13                              Blueberries  0.95            0.3197
+## 14                              Blueberries  1.00            0.3307
+## 15                               Cantaloupe  0.51            0.3748
+## 16                                 Cherries  0.92            0.3417
+## 17       Cherries, packed in syrup or water  0.65            0.4409
+## 18                              Clementines  0.77            0.4630
+## 19                              Cranberries  1.00            0.1232
+## 20                                    Dates  1.00            0.1653
+## 21                                     Figs  0.96            0.1653
+## 22          Fruit cocktail, packed in juice  1.00            0.5401
+## 23 Fruit cocktail, packed in syrup or water  0.65            0.4409
+## 24                               Grapefruit  0.49            0.4630
+## 25               Grapefruit, ready-to-drink  1.00            8.0000
+## 26                                   Grapes  0.96            0.3307
+## 27                         Grapes (raisins)  1.00            0.1653
+## 28                   Grapes, ready-to-drink  1.00            8.0000
+## 29               Grapes, frozen concentrate  1.00            8.0000
+## 30                                 Honeydew  0.46            0.3748
+## 31                                     Kiwi  0.76            0.3858
+## 32                                  Mangoes  0.71            0.3638
+## 33                                  Mangoes  1.00            0.1253
+## 34                               Nectarines  0.91            0.3197
+## 35                                  Oranges  0.68            0.4079
+## 36                  Oranges, ready-to-drink  1.00            8.0000
+## 37              Oranges, frozen concentrate  1.00            8.0000
+## 38                                   Papaya  0.62            0.3086
+## 39                                   Papaya  1.00            0.1543
+## 40                                  Peaches  0.96            0.3417
+## 41                 Peaches, packed in juice  1.00            0.5401
+## 42        Peaches, packed in syrup or water  0.65            0.4409
+## 43                                  Peaches  1.00            0.3307
+## 44                                    Pears  0.90            0.3638
+## 45                   Pears, packed in juice  1.00            0.5401
+## 46          Pears, packed in syrup or water  0.65            0.4409
+## 47                                Pineapple  0.51            0.3638
+## 48               Pineapple, packed in juice  1.00            0.5401
+## 49      Pineapple, packed in syrup or water  0.65            0.4409
+## 50                                Pineapple  1.00            0.1543
+## 51                Pineapple, ready-to-drink  1.00            8.0000
+## 52            Pineapple, frozen concentrate  1.00            8.0000
+## 53                                     Plum  0.94            0.3638
+## 54                            Plum (prunes)  1.00            0.1874
+## 55             Plum (prune), ready-to-drink  1.00            8.0000
+## 56                              Pomegranate  0.56            0.3417
+## 57              Pomegranate, ready-to-drink  1.00            8.0000
+## 58                              Raspberries  0.96            0.3197
+## 59                              Raspberries  1.00            0.3307
+## 60                             Strawberries  0.94            0.3197
+## 61                             Strawberries  1.00            0.3307
+## 62                               Watermelon  0.52            0.3307
+##    CupEquivalentUnit CupEquivalentPrice YieldPerCup PricePerCup
+## 1             pounds             0.4996    3.711340   1.8541856
+## 2             pounds             0.6323    1.851509   1.1707091
+## 3       fluid ounces             0.4349    0.125000   0.0543625
+## 4       fluid ounces             0.3043    0.125000   0.0380375
+## 5             pounds             1.4145    2.556350   3.6159566
+## 6             pounds             1.0071    1.851509   1.8646547
+## 7             pounds             1.5169    1.474257   2.2363007
+## 8             pounds             1.0978    6.978367   7.6608514
+## 9             pounds             0.3085    1.935289   0.5970366
+## 10            pounds             1.4112    3.023889   4.2673118
+## 11            pounds             2.2471    3.002815   6.7476259
+## 12            pounds             1.5965    3.023889   4.8276383
+## 13            pounds             1.3990    2.971536   4.1571786
+## 14            pounds             1.2636    3.023889   3.8209858
+## 15            pounds             0.5528    1.360726   0.7522092
+## 16            pounds             1.7321    2.692420   4.6635411
+## 17            pounds             3.5558    1.474257   5.2421638
+## 18            pounds             0.9507    1.663067   1.5810778
+## 19            pounds             0.6260    8.116883   5.0811688
+## 20            pounds             0.9507    6.049607   5.7513612
+## 21            pounds             1.2613    5.807623   7.3251543
+## 22            pounds             1.2931    1.851509   2.3941863
+## 23            pounds             1.4242    1.474257   2.0996371
+## 24            pounds             1.3647    1.058315   1.4442829
+## 25      fluid ounces             0.5968    0.125000   0.0746000
+## 26            pounds             0.7014    2.902933   2.0361173
+## 27            pounds             0.6603    6.049607   3.9945554
+## 28      fluid ounces             0.5255    0.125000   0.0656875
+## 29      fluid ounces             0.3762    0.125000   0.0470250
+## 30            pounds             0.9442    1.227321   1.1588367
+## 31            pounds             1.3231    1.969933   2.6064178
+## 32            pounds             0.7531    1.951622   1.4697664
+## 33            pounds             1.2906    7.980846  10.3000798
+## 34            pounds             0.8333    2.846419   2.3719206
+## 35            pounds             0.8771    1.667075   1.4621917
+## 36      fluid ounces             0.5286    0.125000   0.0660750
+## 37      fluid ounces             0.3669    0.125000   0.0458625
+## 38            pounds             0.6658    2.009073   1.3376410
+## 39            pounds             1.1552    6.480881   7.4867142
+## 40            pounds             0.7755    2.809482   2.1787533
+## 41            pounds             1.2155    1.851509   2.2505092
+## 42            pounds             1.3636    1.474257   2.0102971
+## 43            pounds             1.1924    3.023889   3.6056849
+## 44            pounds             0.7466    2.473887   1.8470038
+## 45            pounds             1.1559    1.851509   2.1401592
+## 46            pounds             1.4191    1.474257   2.0921184
+## 47            pounds             0.4401    1.401869   0.6169626
+## 48            pounds             0.8917    1.851509   1.6509906
+## 49            pounds             1.2055    1.474257   1.7772171
+## 50            pounds             1.0823    6.480881   7.0142579
+## 51      fluid ounces             0.6122    0.125000   0.0765250
+## 52      fluid ounces             0.3628    0.125000   0.0453500
+## 53            pounds             0.9775    2.583837   2.5257009
+## 54            pounds             1.1861    5.336179   6.3292423
+## 55      fluid ounces             0.8494    0.125000   0.1061750
+## 56            pounds             1.5055    1.638865   2.4673105
+## 57      fluid ounces             1.6394    0.125000   0.2049250
+## 58            pounds             2.5753    3.002815   7.7331498
+## 59            pounds             2.0368    3.023889   6.1590565
+## 60            pounds             1.0094    2.940256   2.9678949
+## 61            pounds             1.1052    3.023889   3.3420018
+## 62            pounds             0.2429    1.572422   0.3819413
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(kableExtra)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: package 'kableExtra' was built under R version 4.4.3
+\end{verbatim}
+
+\begin{verbatim}
+## 
+## Attaching package: 'kableExtra'
+\end{verbatim}
+
+\begin{verbatim}
+## The following object is masked from 'package:dplyr':
+## 
+##     group_rows
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{FruitData }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{select}\NormalTok{(Fruit, Form, CupEquivalentPrice) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{arrange}\NormalTok{(}\SpecialCharTok{{-}}\NormalTok{CupEquivalentPrice) }\SpecialCharTok{\%\textgreater{}\%}\NormalTok{   knitr}\SpecialCharTok{::}\FunctionTok{kable}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{kable\_styling}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{scroll\_box}\NormalTok{(}\AttributeTok{width =} \StringTok{"500px"}\NormalTok{, }\AttributeTok{height =} \StringTok{"200px"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[t]{llr}
+\toprule
+Fruit & Form & CupEquivalentPrice\\
+\midrule
+Cherries, packed in syrup or water & Canned & 3.5558\\
+Raspberries & Fresh & 2.5753\\
+Blackberries & Fresh & 2.2471\\
+Raspberries & Frozen & 2.0368\\
+Cherries & Fresh & 1.7321\\
+\addlinespace
+Pomegranate, ready-to-drink & Juice & 1.6394\\
+Blackberries & Frozen & 1.5965\\
+Apricots, packed in syrup or water & Canned & 1.5169\\
+Pomegranate & Fresh & 1.5055\\
+Fruit cocktail, packed in syrup or water & Canned & 1.4242\\
+\addlinespace
+Pears, packed in syrup or water & Canned & 1.4191\\
+Apricots & Fresh & 1.4145\\
+Berries, mixed & Frozen & 1.4112\\
+Blueberries & Fresh & 1.3990\\
+Grapefruit & Fresh & 1.3647\\
+\addlinespace
+Peaches, packed in syrup or water & Canned & 1.3636\\
+Kiwi & Fresh & 1.3231\\
+Fruit cocktail, packed in juice & Canned & 1.2931\\
+Mangoes & Dried & 1.2906\\
+Blueberries & Frozen & 1.2636\\
+\addlinespace
+Figs & Dried & 1.2613\\
+Peaches, packed in juice & Canned & 1.2155\\
+Pineapple, packed in syrup or water & Canned & 1.2055\\
+Peaches & Frozen & 1.1924\\
+Plum (prunes) & Dried & 1.1861\\
+\addlinespace
+Pears, packed in juice & Canned & 1.1559\\
+Papaya & Dried & 1.1552\\
+Strawberries & Frozen & 1.1052\\
+Apricots & Dried & 1.0978\\
+Pineapple & Dried & 1.0823\\
+\addlinespace
+Strawberries & Fresh & 1.0094\\
+Apricots, packed in juice & Canned & 1.0071\\
+Plum & Fresh & 0.9775\\
+Clementines & Fresh & 0.9507\\
+Dates & Dried & 0.9507\\
+\addlinespace
+Honeydew & Fresh & 0.9442\\
+Pineapple, packed in juice & Canned & 0.8917\\
+Oranges & Fresh & 0.8771\\
+Plum (prune), ready-to-drink & Juice & 0.8494\\
+Nectarines & Fresh & 0.8333\\
+\addlinespace
+Peaches & Fresh & 0.7755\\
+Mangoes & Fresh & 0.7531\\
+Pears & Fresh & 0.7466\\
+Grapes & Fresh & 0.7014\\
+Papaya & Fresh & 0.6658\\
+\addlinespace
+Grapes (raisins) & Dried & 0.6603\\
+Apples, applesauce & Canned & 0.6323\\
+Cranberries & Dried & 0.6260\\
+Pineapple, ready-to-drink & Juice & 0.6122\\
+Grapefruit, ready-to-drink & Juice & 0.5968\\
+\addlinespace
+Cantaloupe & Fresh & 0.5528\\
+Oranges, ready-to-drink & Juice & 0.5286\\
+Grapes, ready-to-drink & Juice & 0.5255\\
+Apples & Fresh & 0.4996\\
+Pineapple & Fresh & 0.4401\\
+\addlinespace
+Apples, ready-to-drink & Juice & 0.4349\\
+Grapes, frozen concentrate & Juice & 0.3762\\
+Oranges, frozen concentrate & Juice & 0.3669\\
+Pineapple, frozen concentrate & Juice & 0.3628\\
+Bananas & Fresh & 0.3085\\
+\addlinespace
+Apples, frozen concentrate & Juice & 0.3043\\
+Watermelon & Fresh & 0.2429\\
+\bottomrule
+\end{longtable}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{AveragePriceperForm }\OtherTok{\textless{}{-}}\NormalTok{ FruitData }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{group\_by}\NormalTok{(Form) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{summarise}\NormalTok{(}\AttributeTok{AveragePrice =} \FunctionTok{mean}\NormalTok{(RetailPrice, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{))}
+
+\NormalTok{AveragePriceperForm }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Form, }\AttributeTok{y =}\NormalTok{ AveragePrice)) }\SpecialCharTok{+} \FunctionTok{geom\_col}\NormalTok{() }\SpecialCharTok{+} \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Average Retail Price per Market (Form)"}\NormalTok{, }\AttributeTok{x =} \StringTok{"Market Form"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Average Price ($)"}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{theme\_minimal}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Fruit-and-Vegetable-Project_files/figure-latex/unnamed-chunk-6-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#view just the vegetable, form, price, price unit, and yield. Then add a column that shows the prices per unit yield. }
+\NormalTok{VegetablePriceperYield }\OtherTok{\textless{}{-}}\NormalTok{ VegetableData }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{select}\NormalTok{(}\StringTok{"Vegetable"}\NormalTok{, }\StringTok{"Form"}\NormalTok{, }\StringTok{"RetailPrice"}\NormalTok{, }\StringTok{"RetailPriceUnit"}\NormalTok{, }\StringTok{"Yield"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{mutate}\NormalTok{(}\AttributeTok{RetailPriceperYield =}\NormalTok{ RetailPrice }\SpecialCharTok{*}\NormalTok{ Yield)}
+\NormalTok{VegetablePriceperYield}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                                             Vegetable   Form RetailPrice
+## 1                                        Acorn squash  Fresh      1.2136
+## 2                                           Artichoke  Fresh      2.4703
+## 3                                           Artichoke Canned      3.4498
+## 4                                           Asparagus  Fresh      2.9531
+## 5                                           Asparagus Canned      3.4328
+## 6                                           Asparagus Frozen      6.8212
+## 7                                            Avocados  Fresh      2.6737
+## 8                                               Beets Canned      1.1431
+## 9                                         Black beans Canned      1.2387
+## 10                                        Black beans  Dried      1.5250
+## 11                                      Blackeye peas Canned      1.3164
+## 12                                      Blackeye peas  Dried      1.9265
+## 13                                   Broccoli florets  Fresh      2.9162
+## 14                                     Broccoli heads  Fresh      3.0820
+## 15                                           Broccoli Frozen      2.3458
+## 16                                   Brussels sprouts  Fresh      2.9139
+## 17                                   Brussels sprouts Frozen      2.5949
+## 18                                   Butternut squash  Fresh      1.2691
+## 19                                     Cabbage, green  Fresh      0.7970
+## 20                                       Cabbage, red  Fresh      1.2604
+## 21                                Cabbage, sauerkraut Canned      1.4780
+## 22                              Carrots, cooked whole  Fresh      0.9761
+## 23                                 Carrots, raw whole  Fresh      0.9761
+## 24                                      Carrots, baby  Fresh      1.3507
+## 25                                            Carrots Canned      1.1979
+## 26                                            Carrots Frozen      1.7277
+## 27                                Cauliflower florets  Fresh      3.8022
+## 28                                  Cauliflower heads  Fresh      2.1841
+## 29                                        Cauliflower Frozen      2.3974
+## 30                            Celery, trimmed bunches  Fresh      1.1637
+## 31                                      Celery sticks  Fresh      2.4941
+## 32                                     Collard greens  Fresh      3.0881
+## 33                                     Collard greens Canned      1.3315
+## 34                                     Collard greens Frozen      2.3512
+## 35                                               Corn  Fresh      2.2281
+## 36                                               Corn Canned      1.1543
+## 37                                               Corn Frozen      1.6889
+## 38                                Cucumbers with peel  Fresh      1.2473
+## 39                             Cucumbers without peel  Fresh      1.2473
+## 40                               Great northern beans Canned      1.1583
+## 41                               Great northern beans  Dried      1.7202
+## 42                                        Green beans  Fresh      2.6199
+## 43                                        Green beans Canned      1.1291
+## 44                                        Green beans Frozen      1.9983
+## 45                                         Green peas Canned      1.3118
+## 46                                         Green peas Frozen      1.9960
+## 47                                      Green peppers  Fresh      1.4789
+## 48                                               Kale  Fresh      3.4338
+## 49                                               Kale Frozen      2.2983
+## 50                                       Kidney beans Canned      1.1208
+## 51                                       Kidney beans  Dried      1.9176
+## 52                                            Lentils  Dried      1.8390
+## 53                                   Lettuce, iceberg  Fresh      1.2512
+## 54                            Lettuce, romaine, heads  Fresh      2.3074
+## 55                           Lettuce, romaine, hearts  Fresh      3.2802
+## 56                                         Lima beans Canned      1.4785
+## 57                                         Lima beans Frozen      2.4401
+## 58                                         Lima beans  Dried      2.3933
+## 59                   Mixed vegetables, peas & carrots Canned      1.4754
+## 60                   Mixed vegetables, peas & carrots Frozen      1.8433
+## 61 Mixed vegetables, carrots, peas, corn, green beans Frozen      1.7859
+## 62   Mixed vegetables, broccoli, cauliflower, carrots Frozen      2.1538
+## 63                                   Mushrooms, whole  Fresh      3.8929
+## 64                                  Mushrooms, sliced  Fresh      3.9224
+## 65                                     Mustard greens Canned      1.3367
+## 66                                     Mustard greens Frozen      2.4324
+## 67                                         Navy beans Canned      1.2738
+## 68                                         Navy beans  Dried      1.6073
+## 69                                               Okra  Fresh      5.1567
+## 70                                               Okra Frozen      2.2528
+## 71                                             Olives Canned      5.3496
+## 72                                             Onions  Fresh      1.1062
+## 73                                        Pinto beans Canned      1.1189
+## 74                                        Pinto beans  Dried      1.4173
+## 75                                           Potatoes  Fresh      0.8166
+## 76                             Potatoes, french fries Frozen      1.9018
+## 77                                           Potatoes Canned      1.0266
+## 78                                            Pumpkin Canned      1.8642
+## 79                                             Radish  Fresh      1.8126
+## 80                                        Red peppers  Fresh      1.8742
+## 81                                    Spinach, boiled  Fresh      4.1214
+## 82                                 Spinach, eaten raw  Fresh      4.1214
+## 83                                            Spinach Canned      1.5676
+## 84                                            Spinach Frozen      2.2796
+## 85                                     Sweet potatoes  Fresh      1.1565
+## 86                           Tomatoes, grape & cherry  Fresh      3.8729
+## 87                              Tomatoes, roma & plum  Fresh      1.2453
+## 88                              Tomatoes, large round  Fresh      2.1868
+## 89                                           Tomatoes Canned      1.0715
+## 90                                      Turnip greens  Fresh      2.9250
+## 91                                      Turnip greens Canned      1.3154
+## 92                                      Turnip greens Frozen      2.5169
+## 93                                           Zucchini  Fresh      1.6359
+##    RetailPriceUnit  Yield RetailPriceperYield
+## 1        per pound 0.4586           0.5565570
+## 2        per pound 0.3750           0.9263625
+## 3        per pound 0.6500           2.2423700
+## 4        per pound 0.4938           1.4582408
+## 5        per pound 0.6500           2.2313200
+## 6        per pound 1.0335           7.0497102
+## 7        per pound 0.7408           1.9806770
+## 8        per pound 0.6500           0.7430150
+## 9        per pound 0.6500           0.8051550
+## 10       per pound 2.4692           3.7655300
+## 11       per pound 0.6500           0.8556600
+## 12       per pound 2.5397           4.8927321
+## 13       per pound 1.0000           2.9162000
+## 14       per pound 0.7800           2.4039600
+## 15       per pound 0.8818           2.0685264
+## 16       per pound 1.0600           3.0887340
+## 17       per pound 0.9600           2.4911040
+## 18       per pound 0.7140           0.9061374
+## 19       per pound 0.7788           0.6207036
+## 20       per pound 0.7791           0.9819776
+## 21       per pound 0.6500           0.9607000
+## 22       per pound 0.8158           0.7963024
+## 23       per pound 0.8900           0.8687290
+## 24       per pound 1.0000           1.3507000
+## 25       per pound 0.6500           0.7786350
+## 26       per pound 0.9800           1.6931460
+## 27       per pound 0.9702           3.6888944
+## 28       per pound 0.8926           1.9495277
+## 29       per pound 0.9304           2.2305410
+## 30       per pound 0.7300           0.8495010
+## 31       per pound 1.0000           2.4941000
+## 32       per pound 1.1600           3.5821960
+## 33       per pound 0.6500           0.8654750
+## 34       per pound 0.8818           2.0732882
+## 35       per pound 0.5400           1.2031740
+## 36       per pound 0.6500           0.7502950
+## 37       per pound 0.9630           1.6264107
+## 38       per pound 0.9700           1.2098810
+## 39       per pound 0.7300           0.9105290
+## 40       per pound 0.6500           0.7528950
+## 41       per pound 2.4692           4.2475178
+## 42       per pound 0.8466           2.2180073
+## 43       per pound 0.6500           0.7339150
+## 44       per pound 0.9030           1.8044649
+## 45       per pound 0.6500           0.8526700
+## 46       per pound 0.8924           1.7812304
+## 47       per pound 0.8200           1.2126980
+## 48       per pound 1.0500           3.6054900
+## 49       per pound 0.8995           2.0673208
+## 50       per pound 0.6500           0.7285200
+## 51       per pound 2.4692           4.7349379
+## 52       per pound 2.4692           4.5408588
+## 53       per pound 0.9500           1.1886400
+## 54       per pound 0.9400           2.1689560
+## 55       per pound 0.8500           2.7881700
+## 56       per pound 0.6500           0.9610250
+## 57       per pound 1.0970           2.6767897
+## 58       per pound 2.5397           6.0782640
+## 59       per pound 0.6500           0.9590100
+## 60       per pound 0.9900           1.8248670
+## 61       per pound 0.9700           1.7323230
+## 62       per pound 0.9700           2.0891860
+## 63       per pound 0.9700           3.7761130
+## 64       per pound 1.0000           3.9224000
+## 65       per pound 0.6500           0.8688550
+## 66       per pound 0.7478           1.8189487
+## 67       per pound 0.6500           0.8279700
+## 68       per pound 2.4692           3.9687452
+## 69       per pound 0.7695           3.9680806
+## 70       per pound 0.8995           2.0263936
+## 71       per pound 1.0000           5.3496000
+## 72       per pound 0.9000           0.9955800
+## 73       per pound 0.6500           0.7272850
+## 74       per pound 2.4692           3.4995972
+## 75       per pound 0.8113           0.6625076
+## 76       per pound 0.7760           1.4757968
+## 77       per pound 0.6500           0.6672900
+## 78       per pound 1.0000           1.8642000
+## 79       per pound 0.9000           1.6313400
+## 80       per pound 0.8200           1.5368440
+## 81       per pound 0.7700           3.1734780
+## 82       per pound 1.0000           4.1214000
+## 83       per pound 0.6500           1.0189400
+## 84       per pound 0.7760           1.7689696
+## 85       per pound 0.8818           1.0198017
+## 86       per pound 0.9100           3.5243390
+## 87       per pound 0.9100           1.1332230
+## 88       per pound 0.9100           1.9899880
+## 89       per pound 1.0000           1.0715000
+## 90       per pound 0.7500           2.1937500
+## 91       per pound 0.6500           0.8550100
+## 92       per pound 0.7760           1.9531144
+## 93       per pound 0.7695           1.2588250
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Providing the yield per cuup and price per cup for each fruit. }
+\NormalTok{VegetableCupEquivalentData }\OtherTok{\textless{}{-}}\NormalTok{ VegetableData }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{select}\NormalTok{(Vegetable, Yield, CupEquivalentSize, CupEquivalentUnit, CupEquivalentPrice) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{mutate}\NormalTok{(}\AttributeTok{YieldPerCup =}\NormalTok{ Yield }\SpecialCharTok{/}\NormalTok{ CupEquivalentSize) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{mutate}\NormalTok{(}\AttributeTok{PricePerCup =}\NormalTok{ YieldPerCup }\SpecialCharTok{*}\NormalTok{ CupEquivalentPrice)}
+\NormalTok{VegetableCupEquivalentData}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                                             Vegetable  Yield CupEquivalentSize
+## 1                                        Acorn squash 0.4586            0.4519
+## 2                                           Artichoke 0.3750            0.3858
+## 3                                           Artichoke 0.6500            0.3858
+## 4                                           Asparagus 0.4938            0.3968
+## 5                                           Asparagus 0.6500            0.3968
+## 6                                           Asparagus 1.0335            0.3968
+## 7                                            Avocados 0.7408            0.3197
+## 8                                               Beets 0.6500            0.3748
+## 9                                         Black beans 0.6500            0.3858
+## 10                                        Black beans 2.4692            0.3858
+## 11                                      Blackeye peas 0.6500            0.3748
+## 12                                      Blackeye peas 2.5397            0.3858
+## 13                                   Broccoli florets 1.0000            0.3417
+## 14                                     Broccoli heads 0.7800            0.3417
+## 15                                           Broccoli 0.8818            0.3417
+## 16                                   Brussels sprouts 1.0600            0.3417
+## 17                                   Brussels sprouts 0.9600            0.3417
+## 18                                   Butternut squash 0.7140            0.4519
+## 19                                     Cabbage, green 0.7788            0.3307
+## 20                                       Cabbage, red 0.7791            0.3307
+## 21                                Cabbage, sauerkraut 0.6500            0.3086
+## 22                              Carrots, cooked whole 0.8158            0.3197
+## 23                                 Carrots, raw whole 0.8900            0.2756
+## 24                                      Carrots, baby 1.0000            0.2756
+## 25                                            Carrots 0.6500            0.3197
+## 26                                            Carrots 0.9800            0.3197
+## 27                                Cauliflower florets 0.9702            0.2756
+## 28                                  Cauliflower heads 0.8926            0.2756
+## 29                                        Cauliflower 0.9304            0.2756
+## 30                            Celery, trimmed bunches 0.7300            0.2646
+## 31                                      Celery sticks 1.0000            0.2646
+## 32                                     Collard greens 1.1600            0.2866
+## 33                                     Collard greens 0.6500            0.3638
+## 34                                     Collard greens 0.8818            0.3638
+## 35                                               Corn 0.5400            0.3638
+## 36                                               Corn 0.6500            0.3638
+## 37                                               Corn 0.9630            0.3638
+## 38                                Cucumbers with peel 0.9700            0.2646
+## 39                             Cucumbers without peel 0.7300            0.2646
+## 40                               Great northern beans 0.6500            0.3858
+## 41                               Great northern beans 2.4692            0.3858
+## 42                                        Green beans 0.8466            0.2756
+## 43                                        Green beans 0.6500            0.2976
+## 44                                        Green beans 0.9030            0.2976
+## 45                                         Green peas 0.6500            0.3527
+## 46                                         Green peas 0.8924            0.3527
+## 47                                      Green peppers 0.8200            0.2646
+## 48                                               Kale 1.0500            0.2866
+## 49                                               Kale 0.8995            0.3638
+## 50                                       Kidney beans 0.6500            0.3858
+## 51                                       Kidney beans 2.4692            0.3858
+## 52                                            Lentils 2.4692            0.3858
+## 53                                   Lettuce, iceberg 0.9500            0.2425
+## 54                            Lettuce, romaine, heads 0.9400            0.2094
+## 55                           Lettuce, romaine, hearts 0.8500            0.2094
+## 56                                         Lima beans 0.6500            0.3748
+## 57                                         Lima beans 1.0970            0.3748
+## 58                                         Lima beans 2.5397            0.3858
+## 59                   Mixed vegetables, peas & carrots 0.6500            0.3392
+## 60                   Mixed vegetables, peas & carrots 0.9900            0.3392
+## 61 Mixed vegetables, carrots, peas, corn, green beans 0.9700            0.3340
+## 62   Mixed vegetables, broccoli, cauliflower, carrots 0.9700            0.3105
+## 63                                   Mushrooms, whole 0.9700            0.1543
+## 64                                  Mushrooms, sliced 1.0000            0.1543
+## 65                                     Mustard greens 0.6500            0.3307
+## 66                                     Mustard greens 0.7478            0.3307
+## 67                                         Navy beans 0.6500            0.3858
+## 68                                         Navy beans 2.4692            0.3858
+## 69                                               Okra 0.7695            0.3527
+## 70                                               Okra 0.8995            0.3748
+## 71                                             Olives 1.0000            0.2976
+## 72                                             Onions 0.9000            0.3527
+## 73                                        Pinto beans 0.6500            0.3858
+## 74                                        Pinto beans 2.4692            0.3858
+## 75                                           Potatoes 0.8113            0.2646
+## 76                             Potatoes, french fries 0.7760            0.3417
+## 77                                           Potatoes 0.6500            0.3417
+## 78                                            Pumpkin 1.0000            0.5401
+## 79                                             Radish 0.9000            0.2756
+## 80                                        Red peppers 0.8200            0.2646
+## 81                                    Spinach, boiled 0.7700            0.3307
+## 82                                 Spinach, eaten raw 1.0000            0.1543
+## 83                                            Spinach 0.6500            0.3748
+## 84                                            Spinach 0.7760            0.3748
+## 85                                     Sweet potatoes 0.8818            0.4409
+## 86                           Tomatoes, grape & cherry 0.9100            0.3748
+## 87                              Tomatoes, roma & plum 0.9100            0.3748
+## 88                              Tomatoes, large round 0.9100            0.3748
+## 89                                           Tomatoes 1.0000            0.5401
+## 90                                      Turnip greens 0.7500            0.3197
+## 91                                      Turnip greens 0.6500            0.3527
+## 92                                      Turnip greens 0.7760            0.3527
+## 93                                           Zucchini 0.7695            0.3968
+##    CupEquivalentUnit CupEquivalentPrice YieldPerCup PricePerCup
+## 1             pounds             1.1961   1.0148263   1.2138337
+## 2             pounds             2.5415   0.9720062   2.4703538
+## 3             pounds             2.0476   1.6848108   3.4498186
+## 4             pounds             2.3731   1.2444556   2.9532177
+## 5             pounds             2.0958   1.6381048   3.4331401
+## 6             pounds             2.6191   2.6045867   6.8216730
+## 7             pounds             1.1538   2.3171723   2.6735535
+## 8             pounds             0.6591   1.7342583   1.1430496
+## 9             pounds             0.7352   1.6848108   1.2386729
+## 10            pounds             0.2383   6.4002074   1.5251694
+## 11            pounds             0.7590   1.7342583   1.3163020
+## 12            pounds             0.2926   6.5829445   1.9261696
+## 13            pounds             0.9965   2.9265438   2.9163008
+## 14            pounds             1.3502   2.2827041   3.0821071
+## 15            pounds             0.9090   2.5806263   2.3457893
+## 16            pounds             0.9394   3.1021364   2.9141469
+## 17            pounds             0.9237   2.8094820   2.5951185
+## 18            pounds             0.8033   1.5799956   1.2692104
+## 19            pounds             0.3384   2.3550045   0.7969335
+## 20            pounds             0.5350   2.3559117   1.2604128
+## 21            pounds             0.7018   2.1062865   1.4781918
+## 22            pounds             0.3825   2.5517673   0.9760510
+## 23            pounds             0.3022   3.2293179   0.9758999
+## 24            pounds             0.3722   3.6284470   1.3505080
+## 25            pounds             0.5892   2.0331561   1.1979356
+## 26            pounds             0.5636   3.0653738   1.7276447
+## 27            pounds             1.0800   3.5203193   3.8019448
+## 28            pounds             0.6743   3.2387518   2.1838903
+## 29            pounds             0.7101   3.3759071   2.3972316
+## 30            pounds             0.4217   2.7588813   1.1634203
+## 31            pounds             0.6598   3.7792895   2.4935752
+## 32            pounds             0.7630   4.0474529   3.0882066
+## 33            pounds             0.7452   1.7866960   1.3314458
+## 34            pounds             0.9699   2.4238593   2.3509011
+## 35            pounds             1.5009   1.4843321   2.2278340
+## 36            pounds             0.6460   1.7866960   1.1542056
+## 37            pounds             0.6380   2.6470588   1.6888235
+## 38            pounds             0.3402   3.6659108   1.2471429
+## 39            pounds             0.4520   2.7588813   1.2470144
+## 40            pounds             0.6875   1.6848108   1.1583074
+## 41            pounds             0.2688   6.4002074   1.7203757
+## 42            pounds             0.8528   3.0718433   2.6196679
+## 43            pounds             0.5170   2.1841398   1.1292003
+## 44            pounds             0.6586   3.0342742   1.9983730
+## 45            pounds             0.7119   1.8429260   1.3119790
+## 46            pounds             0.7889   2.5301956   1.9960713
+## 47            pounds             0.4771   3.0990174   1.4785412
+## 48            pounds             0.9373   3.6636427   3.4339323
+## 49            pounds             0.9295   2.4725124   2.2982002
+## 50            pounds             0.6652   1.6848108   1.1207361
+## 51            pounds             0.2996   6.4002074   1.9175021
+## 52            pounds             0.2873   6.4002074   1.8387796
+## 53            pounds             0.3194   3.9175258   1.2512577
+## 54            pounds             0.5141   4.4890162   2.3078032
+## 55            pounds             0.8082   4.0592168   3.2806590
+## 56            pounds             0.8525   1.7342583   1.4784552
+## 57            pounds             0.8336   2.9268943   2.4398591
+## 58            pounds             0.3636   6.5829445   2.3935586
+## 59            pounds             0.7699   1.9162736   1.4753390
+## 60            pounds             0.6315   2.9186321   1.8431162
+## 61            pounds             0.6150   2.9041916   1.7860778
+## 62            pounds             0.6895   3.1239936   2.1539936
+## 63            pounds             0.6194   6.2864550   3.8938302
+## 64            pounds             0.6053   6.4808814   3.9228775
+## 65            pounds             0.6800   1.9655277   1.3365588
+## 66            pounds             1.0756   2.2612640   2.4322155
+## 67            pounds             0.7561   1.6848108   1.2738854
+## 68            pounds             0.2511   6.4002074   1.6070921
+## 69            pounds             2.3639   2.1817409   5.1574172
+## 70            pounds             0.9387   2.3999466   2.2528299
+## 71            pounds             1.5922   3.3602151   5.3501344
+## 72            pounds             0.4335   2.5517437   1.1061809
+## 73            pounds             0.6641   1.6848108   1.1188828
+## 74            pounds             0.2215   6.4002074   1.4176459
+## 75            pounds             0.2663   3.0661376   0.8165124
+## 76            pounds             0.8374   2.2709980   1.9017337
+## 77            pounds             0.5397   1.9022534   1.0266462
+## 78            pounds             1.0069   1.8515090   1.8642844
+## 79            pounds             0.5550   3.2656023   1.8124093
+## 80            pounds             0.6047   3.0990174   1.8739758
+## 81            pounds             1.7700   2.3283943   4.1212579
+## 82            pounds             0.6360   6.4808814   4.1218406
+## 83            pounds             0.9039   1.7342583   1.5675961
+## 84            pounds             1.1010   2.0704376   2.2795518
+## 85            pounds             0.5782   2.0000000   1.1564000
+## 86            pounds             1.5950   2.4279616   3.8725987
+## 87            pounds             0.5129   2.4279616   1.2453015
+## 88            pounds             0.9006   2.4279616   2.1866222
+## 89            pounds             0.5787   1.8515090   1.0714682
+## 90            pounds             1.2467   2.3459493   2.9246950
+## 91            pounds             0.7138   1.8429260   1.3154806
+## 92            pounds             1.1440   2.2001701   2.5169946
+## 93            pounds             0.8437   1.9392641   1.6361571
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{VegetableData }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{select}\NormalTok{(Vegetable, Form, CupEquivalentPrice) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{arrange}\NormalTok{(}\SpecialCharTok{{-}}\NormalTok{CupEquivalentPrice) }\SpecialCharTok{\%\textgreater{}\%}\NormalTok{   knitr}\SpecialCharTok{::}\FunctionTok{kable}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{kable\_styling}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{scroll\_box}\NormalTok{(}\AttributeTok{width =} \StringTok{"500px"}\NormalTok{, }\AttributeTok{height =} \StringTok{"200px"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[t]{llr}
+\toprule
+Vegetable & Form & CupEquivalentPrice\\
+\midrule
+Asparagus & Frozen & 2.6191\\
+Artichoke & Fresh & 2.5415\\
+Asparagus & Fresh & 2.3731\\
+Okra & Fresh & 2.3639\\
+Asparagus & Canned & 2.0958\\
+\addlinespace
+Artichoke & Canned & 2.0476\\
+Spinach, boiled & Fresh & 1.7700\\
+Tomatoes, grape \& cherry & Fresh & 1.5950\\
+Olives & Canned & 1.5922\\
+Corn & Fresh & 1.5009\\
+\addlinespace
+Broccoli heads & Fresh & 1.3502\\
+Turnip greens & Fresh & 1.2467\\
+Acorn squash & Fresh & 1.1961\\
+Avocados & Fresh & 1.1538\\
+Turnip greens & Frozen & 1.1440\\
+\addlinespace
+Spinach & Frozen & 1.1010\\
+Cauliflower florets & Fresh & 1.0800\\
+Mustard greens & Frozen & 1.0756\\
+Pumpkin & Canned & 1.0069\\
+Broccoli florets & Fresh & 0.9965\\
+\addlinespace
+Collard greens & Frozen & 0.9699\\
+Brussels sprouts & Fresh & 0.9394\\
+Okra & Frozen & 0.9387\\
+Kale & Fresh & 0.9373\\
+Kale & Frozen & 0.9295\\
+\addlinespace
+Brussels sprouts & Frozen & 0.9237\\
+Broccoli & Frozen & 0.9090\\
+Spinach & Canned & 0.9039\\
+Tomatoes, large round & Fresh & 0.9006\\
+Green beans & Fresh & 0.8528\\
+\addlinespace
+Lima beans & Canned & 0.8525\\
+Zucchini & Fresh & 0.8437\\
+Potatoes, french fries & Frozen & 0.8374\\
+Lima beans & Frozen & 0.8336\\
+Lettuce, romaine, hearts & Fresh & 0.8082\\
+\addlinespace
+Butternut squash & Fresh & 0.8033\\
+Green peas & Frozen & 0.7889\\
+Mixed vegetables, peas \& carrots & Canned & 0.7699\\
+Collard greens & Fresh & 0.7630\\
+Blackeye peas & Canned & 0.7590\\
+\addlinespace
+Navy beans & Canned & 0.7561\\
+Collard greens & Canned & 0.7452\\
+Black beans & Canned & 0.7352\\
+Turnip greens & Canned & 0.7138\\
+Green peas & Canned & 0.7119\\
+\addlinespace
+Cauliflower & Frozen & 0.7101\\
+Cabbage, sauerkraut & Canned & 0.7018\\
+Mixed vegetables, broccoli, cauliflower, carrots & Frozen & 0.6895\\
+Great northern beans & Canned & 0.6875\\
+Mustard greens & Canned & 0.6800\\
+\addlinespace
+Cauliflower heads & Fresh & 0.6743\\
+Kidney beans & Canned & 0.6652\\
+Pinto beans & Canned & 0.6641\\
+Celery sticks & Fresh & 0.6598\\
+Beets & Canned & 0.6591\\
+\addlinespace
+Green beans & Frozen & 0.6586\\
+Corn & Canned & 0.6460\\
+Corn & Frozen & 0.6380\\
+Spinach, eaten raw & Fresh & 0.6360\\
+Mixed vegetables, peas \& carrots & Frozen & 0.6315\\
+\addlinespace
+Mushrooms, whole & Fresh & 0.6194\\
+Mixed vegetables, carrots, peas, corn, green beans & Frozen & 0.6150\\
+Mushrooms, sliced & Fresh & 0.6053\\
+Red peppers & Fresh & 0.6047\\
+Carrots & Canned & 0.5892\\
+\addlinespace
+Tomatoes & Canned & 0.5787\\
+Sweet potatoes & Fresh & 0.5782\\
+Carrots & Frozen & 0.5636\\
+Radish & Fresh & 0.5550\\
+Potatoes & Canned & 0.5397\\
+\addlinespace
+Cabbage, red & Fresh & 0.5350\\
+Green beans & Canned & 0.5170\\
+Lettuce, romaine, heads & Fresh & 0.5141\\
+Tomatoes, roma \& plum & Fresh & 0.5129\\
+Green peppers & Fresh & 0.4771\\
+\addlinespace
+Cucumbers without peel & Fresh & 0.4520\\
+Onions & Fresh & 0.4335\\
+Celery, trimmed bunches & Fresh & 0.4217\\
+Carrots, cooked whole & Fresh & 0.3825\\
+Carrots, baby & Fresh & 0.3722\\
+\addlinespace
+Lima beans & Dried & 0.3636\\
+Cucumbers with peel & Fresh & 0.3402\\
+Cabbage, green & Fresh & 0.3384\\
+Lettuce, iceberg & Fresh & 0.3194\\
+Carrots, raw whole & Fresh & 0.3022\\
+\addlinespace
+Kidney beans & Dried & 0.2996\\
+Blackeye peas & Dried & 0.2926\\
+Lentils & Dried & 0.2873\\
+Great northern beans & Dried & 0.2688\\
+Potatoes & Fresh & 0.2663\\
+\addlinespace
+Navy beans & Dried & 0.2511\\
+Black beans & Dried & 0.2383\\
+Pinto beans & Dried & 0.2215\\
+\bottomrule
+\end{longtable}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{VegAveragePriceperForm }\OtherTok{\textless{}{-}}\NormalTok{ VegetableData }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{group\_by}\NormalTok{(Form) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{summarise}\NormalTok{(}\AttributeTok{AveragePrice =} \FunctionTok{mean}\NormalTok{(RetailPrice, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{))}
+
+\NormalTok{VegAveragePriceperForm }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Form, }\AttributeTok{y =}\NormalTok{ AveragePrice)) }\SpecialCharTok{+} \FunctionTok{geom\_col}\NormalTok{() }\SpecialCharTok{+} \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Average Retail Price per Market (Form)"}\NormalTok{, }\AttributeTok{x =} \StringTok{"Market Form"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Average Price ($)"}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{theme\_minimal}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Fruit-and-Vegetable-Project_files/figure-latex/unnamed-chunk-10-1.pdf}
+
+\end{document}
