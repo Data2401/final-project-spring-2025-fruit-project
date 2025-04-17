@@ -1,0 +1,27 @@
+---
+title: "Fruit and Vegetable Presentation"
+author: "Misgana Bekele, Marlene Berrios, and Elizabeth Kenreck"
+date: "2025-04-17"
+output: slidy_presentation  
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+#install packages and set up the data
+install.packages("ggplot2")
+install.packages("dplyr")
+library(ggplot2)
+library(dplyr)
+```
+
+```{r}
+#Load and view data
+VegetableData <- read.csv("Vegetable-Prices-2022.csv")
+FruitData <- read.csv("Fruit-Prices-2022.csv")
+
+glimpse(FruitData)
+glimpse(VegetableData)
+```
