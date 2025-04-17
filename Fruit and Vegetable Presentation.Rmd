@@ -2,7 +2,6 @@
 title: "Fruitful Spending: Which Produce Gives the Best Bite for Your Buck?"
 author: "Misgana Bekele, Marlene Berrios, and Elizabeth Kenreck"
 output: slidy_presentation
-![some fruit](fruit_veggies.jpg)
 ---
 
 ```{r setup, include=FALSE}
@@ -196,3 +195,28 @@ What are the best choices for a tight budget (under $5.00, for example)?
 
 If someone wanted to buy 5 cups of produce on a $3 budget, what combinations would work?
 
+```{r}
+FruitDataUnder3 <- FruitData %>% mutate(Priceper5cups = 5 * CupEquivalentPrice) %>% filter(Priceper5cups < 3)
+
+VegetabledataUnder3 <- VegetableData %>% mutate(Priceper5cups = 5 * CupEquivalentPrice) %>% filter(Priceper5cups < 3) 
+
+FruitDataUnder3 %>% select(Fruit, Form, Priceper5cups) %>% arrange(-Priceper5cups) %>%   knitr::kable() %>% kable_styling() %>% scroll_box(width = "750px", height = "500px")
+
+```
+
+*** 
+
+```{r}
+VegetabledataUnder3 %>% select(Vegetable, Form, Priceper5cups) %>% arrange(-Priceper5cups) %>%   knitr::kable() %>% kable_styling() %>% scroll_box(width = "750px", height = "500px")
+```
+
+*** 
+
+There are only 13 fruit options and 29 vegetable options to fit this scenario. 
+
+Some Examples of what produce you would have been able to buy in this scenario are:
+
+* Canned Carrots for $2.9460 
+* Dried Pinto beans for $1.1075
+* Grapefruit Juice for $2.9840
+* Fresh Watermelon for $1.2145
