@@ -197,6 +197,7 @@ ggplot(compare_avg, aes(x = Form, y = AveragePrice, fill = Category)) +
 
 What are the best choices for a tight budget?
 
+Each price is calculated based on a **5-cup** quantity, which provides a clearer view of the actual cost to purchase a **reasonable** amount. 
                             
 **Meal Idea Under $10: Lentil Stew**
 
@@ -208,11 +209,11 @@ $1.51 - Carrots
 
 $2.16 - Onions 
 
-$0.93 - Fresh Kale 
+$1.69 - Cabbage 
 
 $1.19 - Black Beans
 
-**Total:** $8.55
+**Total:** $9.31
 
 
 **Fruit Snack ideas under $5:**
@@ -225,7 +226,13 @@ $2.20 Pineapple
   
 **Total:** $4.95
 
-Each price is calculated based on a **5-cup** quantity, which provides a clearer view of the actual cost to purchase a **reasonable** amount. 
+
+9 different produce item x 5 cups each = 45 cups
+
+$9.31 + $4.95 = $14.26
+
+**A meal and a snack would total $14.26, less than $15 for 45 cups of produce!**
+
 
 
 
@@ -257,16 +264,16 @@ Some Examples of what produce you would have been able to buy in this scenario a
 
 **Possible vegetables under $3 for 5 cups**
 
-* Canned Carrots for **$2.94** <-- Most expensive option 
+* Canned carrots for **$2.94** -- Most expensive option 
 
-* Dried Pinto beans for **$1.10** <-- Cheapest option 
+* Dried pinto beans for **$1.10** -- Cheapest option  
 
 
 **Possible fruits under $3 for 5 cups**
 
-* Grapefruit Juice for **$2.98** <-- Most expensive option
+* Grapefruit juice for **$2.98** -- Most expensive option
 
-* Fresh Watermelon for **$1.21** <-- Cheapest option 
+* Fresh watermelon for **$1.21** -- Cheapest option 
 
 ***
 
