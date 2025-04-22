@@ -83,3 +83,92 @@ VegAveragePriceperForm <- VegetableData %>% group_by(Form) %>% summarise(Average
 
 VegAveragePriceperForm %>% ggplot(aes(x = Form, y = AveragePrice)) + geom_col() + labs(title = "Average Retail Price per Market (Form)", x = "Market Form", y = "Average Price ($)") + theme_minimal()
 ```
+
+
+```{r}
+fruit_avg <- FruitData %>%
+
+summarize(AveragePrice = mean(RetailPrice)) %>%
+
+mutate(Category = "Fruit")
+
+
+veg_avg <- VegetableData %>%
+
+summarize(AveragePrice = mean(RetailPrice)) %>%
+
+mutate(Category = "Vegetable")
+
+
+compare_avg <- rbind(fruit_avg, veg_avg)
+
+
+ggplot(compare_avg, aes(x = Category, y = AveragePrice, fill = Category)) +
+
+geom_bar(stat = "identity", width = 0.5) +
+
+labs(title = "Average Price: Fruits vs Vegetables", x = "Category", y = "Average Price ($)") +
+
+theme_minimal()
+```
+
+```{r}
+fruit_avg <- FruitData %>% group_by(Form) %>% summarize(AveragePrice = mean(RetailPrice))
+veg_avg <- VegetableData %>% group_by(Form) %>% summarize(AveragePrice = mean(RetailPrice))
+
+
+fruit_avg$Category <- "Fruit"
+veg_avg$Category <- "Vegetable"
+
+
+compare_avg <- rbind(fruit_avg, veg_avg)
+
+
+ggplot(compare_avg, aes(x = Form, y = AveragePrice, fill = Category)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  labs(title = "Average Price by Form: Fruits vs Vegetables", x = "Form", y = "Average Price ($)") +
+  theme_minimal() +
+  coord_flip()
+```
+
+
+```{r}
+FruitData$PriceRange <- cut(FruitData$RetailPrice, breaks=c(0, 2, 4, 6, 8, 10),
+
+labels=c("0-2", "2-4", "4-6", "6-8", "8-10"))
+
+VegetableData$PriceRange <- cut(VegetableData$RetailPrice, breaks=c(0, 2, 4, 6, 8, 10),
+
+labels=c("0-2", "2-4", "4-6", "6-8", "8-10"))
+
+
+fruit_count <- FruitData %>% group_by(PriceRange) %>% summarize(Count = n())
+
+veg_count <- VegetableData %>% group_by(PriceRange) %>% summarize(Count = n())
+
+
+fruit_count$Category <- "Fruit"
+
+veg_count$Category <- "Vegetable"
+
+
+compare_count <- rbind(fruit_count, veg_count)
+
+
+ggplot(compare_count, aes(x = PriceRange, y = Count, fill = Category)) +
+
+geom_bar(stat = "identity", position = "dodge") +
+
+labs(title = "Count by Price Range: Fruits vs Vegetables", x = "Price Range ($)", y = "Count") +
+
+theme_minimal()
+```
+
+```{r}
+FruitDataUnder5 <- FruitData %>% mutate(Priceper5cups = 5 * CupEquivalentPrice) %>% filter(Priceper5cups < 5)
+VegetabledataUnder5 <- VegetableData %>% mutate(Priceper5cups = 5 * CupEquivalentPrice) %>% filter(Priceper5cups < 5)
+
+FruitDataUnder3 <- FruitData %>% mutate(Priceper5cups = 5 * CupEquivalentPrice) %>% filter(Priceper5cups < 3)
+VegetabledataUnder3 <- VegetableData %>% mutate(Priceper5cups = 5 * CupEquivalentPrice) %>% filter(Priceper5cups < 3) 
+```
+
