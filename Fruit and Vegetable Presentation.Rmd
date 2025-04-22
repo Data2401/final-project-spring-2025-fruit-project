@@ -253,7 +253,21 @@ There are only 13 fruit options and 29 vegetable options to fit this scenario.
 
 Some Examples of what produce you would have been able to buy in this scenario are:
 
-* Canned Carrots for $2.9460 
-* Dried Pinto beans for $1.1075
-* Grapefruit Juice for $2.9840
-* Fresh Watermelon for $1.2145
+**Possible vegetables under $3**
+
+* Canned Carrots for **$2.94** 
+* Dried Pinto beans for **$1.10**
+
+
+**Possible fruits under $3**
+
+* Grapefruit Juice for **$2.98**
+* Fresh Watermelon for **$1.21**
+
+***
+
+One of the most interesting patterns from the 2022 data is how **dried fruits** had the highest average prices, despite being sold in smaller quantities. This shows a key point: Price per unit does not always reflect volume, some of the most expensive items give you the least actual food. 
+
+This is an important reminder that when comparing prices, context matters, and "more expesive" does **NOT** always mean "better value." 
+
+
