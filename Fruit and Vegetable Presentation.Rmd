@@ -17,7 +17,7 @@ The goal was to identify any possible differences between fruit and vegetable pr
  Both data sets are from the Economic Research Service on the the US Department of Agriculture website; <http://www.ers.usda.gov/data-products/fruit-and-vegetable-prices>.
 
 
-![some fruit](fruit_veggies.jpg)
+                                ![some fruit](fruit_and_veggie.jpg) 
 
 *** 
 
@@ -72,6 +72,7 @@ AveragePriceperForm %>% ggplot(aes(x = Form, y = AveragePrice)) + geom_col() + l
 FruitData %>% ggplot(aes(x = Form, y = RetailPrice)) + geom_boxplot()
 
 ```
+
 * Dried fruits showed a higher average price per cup range. 
 
 * Fresh showed a greater amount of outliers.
@@ -144,7 +145,7 @@ mutate(Category = "Vegetable")
 compare_avg <- rbind(fruit_avg, veg_avg)
 
 
-ggplot(compare_avg, aes(x = Category, y = AveragePrice, fill = Category)) +
+ggplot(compare_avg, aes(x = Category, y = AveragePrice)) +
 
 geom_bar(stat = "identity", width = 0.5) +
 
