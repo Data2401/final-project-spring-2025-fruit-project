@@ -17,7 +17,7 @@ The goal was to identify any possible differences between fruit and vegetable pr
  Both data sets are from the Economic Research Service on the the US Department of Agriculture website; <http://www.ers.usda.gov/data-products/fruit-and-vegetable-prices>.
 
 
-                                ![some fruit](fruit_and_veggie.jpg) 
+![some fruit](fruit_and_veggie.jpg) 
 
 *** 
 
@@ -193,32 +193,33 @@ ggplot(compare_avg, aes(x = Form, y = AveragePrice, fill = Category)) +
 
 What are the best choices for a tight budget?
 
-                            Meal Idea Under $10: Lentil Stew 
+                            
+*Meal Idea Under $10: Lentil Stew*
 
-                               $1.43 - Lentils
+$1.43 - Lentils
 
-                               $1.33 - Potatoes 
+$1.33 - Potatoes 
 
-                               $1.51 - Carrots
+$1.51 - Carrots
 
-                               $2.16 - Onions 
+$2.16 - Onions 
 
-                               $0.93 - Fresh Kale 
+$0.93 - Fresh Kale 
 
-                               $1.19 - Black Beans
+$1.19 - Black Beans
 
-                               *Total:* $8.55
+*Total:* $8.55
 
 
-                            Snack ideas under $5:
+*Fruit Snack ideas under $5:*
+
+$1.21 Watermelon
   
-                              $1.21 Watermelon
+$1.54 Bananas
   
-                              $1.54 Bananas
+$2.20 Pineapple
   
-                              $2.20 Pineapple
-  
-                              *Total:* $4.95
+*Total:* $4.95
 
 
 
