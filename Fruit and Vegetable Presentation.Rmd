@@ -51,9 +51,9 @@ FruitData %>% select(Fruit, Form, CupEquivalentPrice) %>% arrange(-CupEquivalent
 
 According to the data shown:
 
-* Canned cherries, packed in syrup or water were the most expensive fruit at $3.558 per cup. 
+* Canned cherries, packed in syrup or water were the most expensive fruit at $3.55 per cup. 
 
-* Fresh watermelons were the least expensive at $0.2429 per cup. 
+* Fresh watermelons were the least expensive at $0.24 per cup. 
 
 *** 
 
@@ -99,9 +99,9 @@ VegetableData %>% select(Vegetable, Form, CupEquivalentPrice) %>% arrange(-CupEq
 
  According to the data shown:
 
-* Fresh asparagus were the most expensive vegetable at $2.6191 per cup. 
+* Fresh asparagus were the most expensive vegetable at $2.61 per cup. 
 
-* Dried pinto beans were the least expensive at $0.2215 per cup. 
+* Dried pinto beans were the least expensive at $0.22 per cup. 
 
 ***
 
@@ -127,7 +127,7 @@ VegetableData %>% ggplot(aes(x = Form, y = RetailPrice)) + geom_boxplot()
 
 * Fresh vegetables showed a greater range in price per cup. 
 
-* Canned showed a smaller range but had outliers that were had a higher average retail price per cup.
+* Canned showed a smaller range but had outliers that had a higher average retail price per cup.
 
 ***
 
@@ -217,9 +217,9 @@ $1.19 - Black Beans
 
 **Fruit Snack ideas under $5:**
 
-$1.21 Watermelon
+$0.24 Watermelon
   
-$1.54 Bananas
+$0.30 Bananas
   
 $2.20 Pineapple
   
@@ -252,14 +252,14 @@ There are only **13 fruit** options and **29 vegetable** options to fit this sce
 
 Some Examples of what produce you would have been able to buy in this scenario are:
 
-**Possible vegetables under $3**
+**Possible vegetables under $3 for 5 cups**
 
 * Canned Carrots for **$2.94** <-- Most expensive option 
 
 * Dried Pinto beans for **$1.10** <-- Cheapest option 
 
 
-**Possible fruits under $3**
+**Possible fruits under $3 for 5 cups**
 
 * Grapefruit Juice for **$2.98** <-- Most expensive option
 
