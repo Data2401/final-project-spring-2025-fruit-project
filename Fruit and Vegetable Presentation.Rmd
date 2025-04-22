@@ -225,6 +225,9 @@ $2.20 Pineapple
   
 **Total:** $4.95
 
+Each price is calculated based on a **5-cup** quantity, which provides a clearer view of the actual cost to purchase a **reasonable** amount. 
+
+
 
 
 ***
