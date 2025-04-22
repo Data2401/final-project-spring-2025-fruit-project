@@ -198,7 +198,7 @@ ggplot(compare_avg, aes(x = Form, y = AveragePrice, fill = Category)) +
 What are the best choices for a tight budget?
 
                             
-*Meal Idea Under $10: Lentil Stew*
+**Meal Idea Under $10: Lentil Stew**
 
 $1.43 - Lentils
 
@@ -212,10 +212,10 @@ $0.93 - Fresh Kale
 
 $1.19 - Black Beans
 
-*Total:* $8.55
+**Total:** $8.55
 
 
-*Fruit Snack ideas under $5:*
+**Fruit Snack ideas under $5:**
 
 $1.21 Watermelon
   
@@ -223,7 +223,7 @@ $1.54 Bananas
   
 $2.20 Pineapple
   
-*Total:* $4.95
+**Total:** $4.95
 
 
 
