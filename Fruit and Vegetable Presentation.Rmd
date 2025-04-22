@@ -19,6 +19,10 @@ The goal was to identify any possible differences between fruit and vegetable pr
 
 ![some fruit](fruit_and_veggie.jpg) 
 
+
+
+
+
 *** 
 
 ```{r message = F, warning = F}
