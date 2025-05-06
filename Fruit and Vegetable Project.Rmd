@@ -11,14 +11,38 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+Have you ever wondered which fruits and vegetables are the most and least expensive? 
+
+This project explores the retail prices of fruits and vegetables in different forms. Using the 2022 fruit and vegetable price datasets, we compared retail prices, cup equivalent prices, and average prices by market form.
+
+The goal was to identify any possible differences between fruit and vegetable prices according to the form they were sold in. 
+
+ Both data sets are from the Economic Research Service on the the US Department of Agriculture website; <http://www.ers.usda.gov/data-products/fruit-and-vegetable-prices>.
+ 
+ Below are the some of the packages we installed to view and map our data. 
 
 ```{r}
+#tinytex::install_tinytex()
 #install packages and set up the data
 #install.packages("ggplot2")
 #install.packages("dplyr")
 library(ggplot2)
 library(dplyr)
 ```
+This is the data and a glimpse of the data we used. Along with the actual data we got from these files we also mutated the charts to include 2 additional terms. Below is the list of all the terms we used:
+Fruit: name of the fruit or vegetable
+Form: how the fruit or vegetable was sold
+Retail Price: cost of the produce in dollars
+Retail price unit: unit of measurement the produce was sold
+Yield: how much the produce is usually sold in based on the retail price unit
+Retail price per yeild: the total cost of the pruduce basde on the retail price and the yeild
+Cup equivalent size: measurement of produce equivalent to one cup
+Cup equivalent unit: unit of measurement the produce to one cup
+Cup equivalent price: cost produce sold based on cup equivalent unit
+Price per cup: cost of produce for one cup
+Price per 5 cups: cost of produce for 5 cups
+
+
 
 ```{r}
 #Load and view data
@@ -30,7 +54,9 @@ glimpse(VegetableData)
 ```
 
 
+Our main question when we started looking over the data was, can we compare fruits and vegetables and if so, how? So, we started looking through the data to see if there was anything we could compare. Because both data sets shared the same terms, we decided we we could actually compare the two different types of produce! But before we could do that, we wanted to compare the fruit prices and the vegetable prices individually. 
 
+The original data sets did not include all of the above terms. So, we mutated the data set to include the "Retail price per yield."
 
 ```{r}
 #view just the fruit, form, price, price unit, and yield. Then add a column that shows the prices per unit yield. 
@@ -38,13 +64,19 @@ FruitPriceperYield <- FruitData %>% select("Fruit", "Form", "RetailPrice", "Reta
 FruitPriceperYield
 ```
 
-
+We also mutated the data sets to include the "price per cup."
 
 ```{r}
 #Providing the yield per cuup and price per cup for each fruit. 
 CupEquivalentData <- FruitData %>% select(Fruit, Yield, CupEquivalentSize, CupEquivalentUnit, CupEquivalentPrice) %>% mutate(YieldPerCup = Yield / CupEquivalentSize) %>% mutate(PricePerCup = YieldPerCup * CupEquivalentPrice)
 CupEquivalentData
 ```
+Now were were ready to start answering our first question.
+
+We decided to start with fruits. When viewing the data the first question that came to our mind, was probably the most obvious question. What was the most expensive and least expensive fruit in 2022. When we went to put this data into a graph, the data was not allowing us to show this clearly, so instead we put this data in a scrolling table, sorted from most expensive to least expensive. Before we could put the data into a scrolling table, we need to install kable extra. Once we did this, we were able to answer out first question. 
+
+Most Expensive: Canned cherries, packed in syrup or water at $3.55 per cup
+Least Expensive: Fresh watermelons at $0.24 per cup
 
 ```{r}
 library(kableExtra)
@@ -53,11 +85,33 @@ FruitData %>% select(Fruit, Form, CupEquivalentPrice) %>% arrange(-CupEquivalent
 
 ```
 
+After we answered the first question, we were curious about which form was the most expensive and least expensive. So, to do this we had to group each of the fruits together by their form and then average the price. Do this allowed us to answer this question.
+
+Most expensive: Dried fruits
+Least expensive: Fruit Juice
+
+In addition to answering our second question, we were able to see canned and fresh fruit showed a similar average price. And the average price per cup for eac form had a wide range.
+
 ```{r}
 AveragePriceperForm <- FruitData %>% group_by(Form) %>% summarise(AveragePrice = mean(RetailPrice, na.rm = TRUE))
 
 AveragePriceperForm %>% ggplot(aes(x = Form, y = AveragePrice)) + geom_col() + labs(title = "Average Retail Price per Market (Form)", x = "Market Form", y = "Average Price ($)") + theme_minimal()
 ```
+Then we took the data set that showed each fruit grouped together by form and created a box plot, which allowed us to see why the average calculations of each fruit was what it was. 
+
+Dried fruits shoed a higher average price per cup with an even higher outlier. 
+Fresh fruit showed the most outliers.
+Juice showed the lowest overage price per cup. 
+Overall this confirmed the data from the previous graph. 
+
+```{r}
+FruitData %>% ggplot(aes(x = Form, y = RetailPrice)) + geom_boxplot()
+
+```
+
+Once we made it through the fruit data it was time to see what the vegetable data said! So, once again wee wanted to know what was the most expensive and least expensive vegetable?
+
+So, we needed to add the "Retail price per year" and "Price per cup" to the vegetable data set. 
 
 
 ```{r}
@@ -66,17 +120,32 @@ VegetablePriceperYield <- VegetableData %>% select("Vegetable", "Form", "RetailP
 VegetablePriceperYield
 ```
 
+
+
 ```{r}
 #Providing the yield per cuup and price per cup for each fruit. 
 VegetableCupEquivalentData <- VegetableData %>% select(Vegetable, Yield, CupEquivalentSize, CupEquivalentUnit, CupEquivalentPrice) %>% mutate(YieldPerCup = Yield / CupEquivalentSize) %>% mutate(PricePerCup = YieldPerCup * CupEquivalentPrice)
 VegetableCupEquivalentData
 ```
 
+
+
+The scrolling table showed us:
+
+Most expensive: Fresh asparagus at $2.61 per cup
+Least Expensive: dried pinto beans at $0.22 per cup
 ```{r}
 
 VegetableData %>% select(Vegetable, Form, CupEquivalentPrice) %>% arrange(-CupEquivalentPrice) %>%   knitr::kable() %>% kable_styling() %>% scroll_box(width = "500px", height = "200px")
 
 ```
+
+Next was what is the most expensive and least expensive vegetable by form. 
+
+Most expensive: frozen vegetables
+Least expensive: canned vegetables
+
+In addition to the most expensive and least expensive we also could see the average price per cup for each form was very close with a difference of less than $1.00
 
 ```{r}
 VegAveragePriceperForm <- VegetableData %>% group_by(Form) %>% summarise(AveragePrice = mean(RetailPrice, na.rm = TRUE))
@@ -84,6 +153,17 @@ VegAveragePriceperForm <- VegetableData %>% group_by(Form) %>% summarise(Average
 VegAveragePriceperForm %>% ggplot(aes(x = Form, y = AveragePrice)) + geom_col() + labs(title = "Average Retail Price per Market (Form)", x = "Market Form", y = "Average Price ($)") + theme_minimal()
 ```
 
+Then putting this data into a box plot allowed us to see why the average calculations for each vegetable was what it was.
+
+Fresh vegetables shoed a greater range in price per cup.
+Canned showed a smaller range but had a couple of outliers that had a higher average retail price. 
+
+```{r}
+VegetableData %>% ggplot(aes(x = Form, y = RetailPrice)) + geom_boxplot()
+
+```
+
+After showing the produce separately, we wanted to show the data together to compare and see if there were any differences in prices.This allowed us to see overall, fruit showed a higher average price per category compared to vegetables per cup. Which suggested a higher spending on price per cup when purchasing fruit compared to vegetables. 
 
 ```{r}
 fruit_avg <- FruitData %>%
@@ -112,6 +192,14 @@ labs(title = "Average Price: Fruits vs Vegetables", x = "Category", y = "Average
 theme_minimal()
 ```
 
+We wanted to take it a step further and compare the data's average price per form. This allow us to see:
+
+Juice: Vegetables prices were not affected since data was not provided for vegetables in this specific form. 
+Frozen: About a $2 difference in average price was shown between the categories. 
+Fresh: The average price showed very little difference.
+Dried: Showed the largest difference in average price of almost $5. 
+Canned: Showed a relatively small difference. 
+
 ```{r}
 fruit_avg <- FruitData %>% group_by(Form) %>% summarize(AveragePrice = mean(RetailPrice))
 veg_avg <- VegetableData %>% group_by(Form) %>% summarize(AveragePrice = mean(RetailPrice))
@@ -131,38 +219,7 @@ ggplot(compare_avg, aes(x = Form, y = AveragePrice, fill = Category)) +
   coord_flip()
 ```
 
-
-```{r}
-FruitData$PriceRange <- cut(FruitData$RetailPrice, breaks=c(0, 2, 4, 6, 8, 10),
-
-labels=c("0-2", "2-4", "4-6", "6-8", "8-10"))
-
-VegetableData$PriceRange <- cut(VegetableData$RetailPrice, breaks=c(0, 2, 4, 6, 8, 10),
-
-labels=c("0-2", "2-4", "4-6", "6-8", "8-10"))
-
-
-fruit_count <- FruitData %>% group_by(PriceRange) %>% summarize(Count = n())
-
-veg_count <- VegetableData %>% group_by(PriceRange) %>% summarize(Count = n())
-
-
-fruit_count$Category <- "Fruit"
-
-veg_count$Category <- "Vegetable"
-
-
-compare_count <- rbind(fruit_count, veg_count)
-
-
-ggplot(compare_count, aes(x = PriceRange, y = Count, fill = Category)) +
-
-geom_bar(stat = "identity", position = "dodge") +
-
-labs(title = "Count by Price Range: Fruits vs Vegetables", x = "Price Range ($)", y = "Count") +
-
-theme_minimal()
-```
+We didn't want to just show the data, we also wanted to show examples of how the numbers and costs could have been applied 3 years ago. This is when we mutated the data set to add in the price per 5 cups. This information lets us deal with a more realistic quanity. 
 
 ```{r}
 FruitDataUnder5 <- FruitData %>% mutate(Priceper5cups = 5 * CupEquivalentPrice) %>% filter(Priceper5cups < 5)
@@ -172,3 +229,58 @@ FruitDataUnder3 <- FruitData %>% mutate(Priceper5cups = 5 * CupEquivalentPrice) 
 VegetabledataUnder3 <- VegetableData %>% mutate(Priceper5cups = 5 * CupEquivalentPrice) %>% filter(Priceper5cups < 3) 
 ```
 
+We wanted to know what are the best choices for a tight budget? We looked at a meal option under $10 and snack options under $5. Each price is calculated based on a 5-cup quantity, which provides a clearer view of the actual cost to purchase a reasonable amount. 
+                            
+Meal Idea Under $10: Lentil Stew
+
+$1.43 - Lentils
+
+$1.33 - Potatoes 
+
+$1.51 - Carrots
+
+$2.16 - Onions 
+
+$1.69 - Cabbage 
+
+$1.19 - Black Beans
+
+Total: $9.31
+
+Fruit Snack ideas under $5:
+
+$1.21 Watermelon
+  
+$1.54 Bananas
+  
+$2.20 Pineapple
+  
+Total: $4.95
+
+This showed us we could purchase 9 different produce items times 5 cups each gives you 45 cups of produce all for less than $15.00
+
+We also wanted to see if it was possible for someone to buy 5 cups of produce on a $3 budget, what combinations would work? So we created a scrolling table for fruit and one for vegetables that showed only the produce that was $3.00 or less for 5 cups. 
+
+```{r}
+FruitDataUnder3 <- FruitData %>% mutate(Priceper5cups = 5 * CupEquivalentPrice) %>% filter(Priceper5cups < 3)
+
+VegetabledataUnder3 <- VegetableData %>% mutate(Priceper5cups = 5 * CupEquivalentPrice) %>% filter(Priceper5cups < 3) 
+
+FruitDataUnder3 %>% select(Fruit, Form, Priceper5cups) %>% arrange(-Priceper5cups) %>%   knitr::kable() %>% kable_styling() %>% scroll_box(width = "750px", height = "500px")
+
+```
+
+
+
+```{r}
+VegetabledataUnder3 %>% select(Vegetable, Form, Priceper5cups) %>% arrange(-Priceper5cups) %>%   knitr::kable() %>% kable_styling() %>% scroll_box(width = "750px", height = "500px")
+```
+
+
+Once we did this it allowed us to see there are only 13 fruit options and 29 vegetable options to fit this scenario. The most expensive vegetable was 5 cups of canned carrots at $2.94 and the least expensive was 5 cups of dried pinto beans at $1.10. The most expensive fruit was 5 cups of grapefruit juice at $2.98 and the least expensive was 5 cups of fresh watermelon at $1.21
+
+One of the most interesting patterns from the 2022 data is how dried fruits had the highest average prices, despite being sold in smaller quantities. 
+
+This shows a key point: Price per unit does not always reflect volume, some of the most expensive items give you the least actual food. 
+
+This is an important reminder that when comparing prices, context matters, and "more expensive" does NOT always mean "better value."  
