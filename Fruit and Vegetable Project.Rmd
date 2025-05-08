@@ -2,9 +2,7 @@
 title: "Final Project"
 author: "EKenreck"
 date: "2025-04-10"
-output:
-  pdf_document: default
-  html_document: default
+html_document: default
 ---
 
 ```{r setup, include=FALSE}
@@ -61,7 +59,6 @@ The original data sets did not include all of the above terms. So, we mutated th
 ```{r}
 #view just the fruit, form, price, price unit, and yield. Then add a column that shows the prices per unit yield. 
 FruitPriceperYield <- FruitData %>% select("Fruit", "Form", "RetailPrice", "RetailPriceUnit", "Yield") %>% mutate(RetailPriceperYield = RetailPrice * Yield)
-FruitPriceperYield
 ```
 
 We also mutated the data sets to include the "price per cup."
@@ -69,7 +66,7 @@ We also mutated the data sets to include the "price per cup."
 ```{r}
 #Providing the yield per cuup and price per cup for each fruit. 
 CupEquivalentData <- FruitData %>% select(Fruit, Yield, CupEquivalentSize, CupEquivalentUnit, CupEquivalentPrice) %>% mutate(YieldPerCup = Yield / CupEquivalentSize) %>% mutate(PricePerCup = YieldPerCup * CupEquivalentPrice)
-CupEquivalentData
+
 ```
 Now were were ready to start answering our first question.
 
@@ -117,7 +114,7 @@ So, we needed to add the "Retail price per year" and "Price per cup" to the vege
 ```{r}
 #view just the vegetable, form, price, price unit, and yield. Then add a column that shows the prices per unit yield. 
 VegetablePriceperYield <- VegetableData %>% select("Vegetable", "Form", "RetailPrice", "RetailPriceUnit", "Yield") %>% mutate(RetailPriceperYield = RetailPrice * Yield)
-VegetablePriceperYield
+
 ```
 
 
@@ -125,7 +122,7 @@ VegetablePriceperYield
 ```{r}
 #Providing the yield per cuup and price per cup for each fruit. 
 VegetableCupEquivalentData <- VegetableData %>% select(Vegetable, Yield, CupEquivalentSize, CupEquivalentUnit, CupEquivalentPrice) %>% mutate(YieldPerCup = Yield / CupEquivalentSize) %>% mutate(PricePerCup = YieldPerCup * CupEquivalentPrice)
-VegetableCupEquivalentData
+
 ```
 
 
